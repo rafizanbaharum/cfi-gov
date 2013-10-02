@@ -13,4 +13,6 @@ public enum CfFlowState {
     VERIFIED,
     APPROVED,
     COMPLETED,
+    REMOVED,
+    CANCELLED;
 }

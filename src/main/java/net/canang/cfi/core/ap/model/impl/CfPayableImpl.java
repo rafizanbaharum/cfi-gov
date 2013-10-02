@@ -29,12 +29,6 @@ public abstract class CfPayableImpl extends CfDocumentImpl implements CfPayable 
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SEQ_CF_PYBL")
-    @SequenceGenerator(name = "SEQ_CF_PYBL", sequenceName = "SEQ_CF_PYBL", allocationSize = 1)
-    private Long id;
-
     @NotNull
     @Column(name = "TOTAL_AMOUNT")
     private BigDecimal totalAmount = new BigDecimal(0.00);
@@ -62,14 +56,6 @@ public abstract class CfPayableImpl extends CfDocumentImpl implements CfPayable 
     @ManyToOne(targetEntity = CfPeriodImpl.class)
     @JoinColumn(name = "PERIOD_ID")
     private CfPeriod period;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public BigDecimal getTotalAmount() {
         return totalAmount;
