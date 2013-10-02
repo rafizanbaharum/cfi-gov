@@ -10,8 +10,8 @@ import javax.persistence.Table;
  * @author rafizan.baharum
  * @since 10/2/13
  */
-@Table(name = "CF_SNGL_PYBL")
-@Entity(name = "CfSinglePayable")
+@Table(name = "CF_BTCH_PYBL")
+@Entity(name = "CfBatchPayable")
 public abstract class CfBatchPayableImpl extends CfPayableImpl implements CfSinglePayable{
 
     public CfBatchPayableImpl() {

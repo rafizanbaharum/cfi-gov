@@ -57,93 +57,93 @@ objects and entities. Please refer to the extensibility section of our documenta
 
 
 ### Modules
-00 SO - Shared Object
-01 AM - Access Management
-02 PM - Process Management
-03 HM - History Management
-04 DD - Data Dictionary
-05 GL - General Ledger
-06 VM - Vote Management
-07 JM - Journal Management
-08 BM - Budget Management
-09 DM - Disbursement Management
-10 AP - Account Payable
-11 AR - Account Receivable
+* 00 SO - Shared Object
+* 01 AM - Access Management
+* 02 PM - Process Management
+* 03 HM - History Management
+* 04 DD - Data Dictionary
+* 05 GL - General Ledger
+* 06 VM - Vote Management
+* 07 JM - Journal Management
+* 08 BM - Budget Management
+* 09 DM - Disbursement Management
+* 10 AP - Account Payable
+* 11 AR - Account Receivable
 
 
 ###Extension Points
-- custom data asas
-- document extension (Journal MANUAL, AUTO);
-- reference no (campus, dept etc)
-- secondary refno (journal no, voucher no)
-- queries, workflow with queries/written direction
-- workflow basic PTJ -> BENDAHARI, no zone, shared, group etc
-- currency in receipt
-- sub type in receipt
-- upper approval in workflow
-- complex router
-- cost center structure
-- item code / sodo code customization, basic only use sodo code
+* custom data asas
+*  document extension (Journal MANUAL, AUTO);
+*  reference no (campus, dept etc)
+*  secondary refno (journal no, voucher no)
+*  queries, workflow with queries/written direction
+*  workflow basic PTJ -> BENDAHARI, no zone, shared, group etc
+*   currency in receipt
+*  sub type in receipt
+*  upper approval in workflow
+*  complex router
+*  cost center structure
+*  item code / sodo code customization, basic only use sodo code
 
 
 ###Permission
-VIEW
-READ
-WRITE
-UPDATE
-DELETE
+* VIEW
+* READ
+* WRITE
+* UPDATE
+* DELETE
 
 
 ###Role
-PrincipalRole.GUEST
-PrincipalRole.USER
-PrincipalRole.ADMINISTRATOR
+* PrincipalRole.GUEST
+* PrincipalRole.USER
+* PrincipalRole.ADMINISTRATOR
 
 ###Name Folding
-ACCT=ACCOUNT
-ACTR=ACTOR
-ASMT=ASSESSMENT
-ANSR=ANSWER
-BTCH=BATCH
-BNDL=BUNDLE
-CNTR=CENTER
-CTNT=CONTENT
-CMPS=CAMPUS
-CFGN=CONFIGURATION
-CORS=COURSE
-CRCY=CURRENCY
-DOCM=DOCUMENT
-DPMT=DEPARTMENT
-DSRT=DISTRICT
-DSBM=DISBURSEMENT
-ENRN=ENROLLMENT
-EXMN=EXAMINATION
-FLMN=FULFILLMENT
-GROP=GROUP
-INTR=INSTRUCTOR
-INVC=INVOICE
-LSSN=LESSON
-MMBR=MEMBER
-MODL=MODULE
-PCPL=PRINCIPAL
-PYBL=PAYABLE
-PYMT=PAYMENT
-PRJT=PROJECT
-QSTN=QUESTION
-RVBL=RECEIVABLE
-RCPN=RECIPIENT
-RGTN=REGISTRATION
-RSPN=RESPONSE
-SCTN=SECTION
-SESN=SESSION
-SNGL=SINGLE
-STDN=STUDENT
-SPRT = SUB_PROJECT
-SMDL=SUB_MODULE/SAMDOL
-SPPT=SUPPORT
-TRSN = TRANSACTION
-USER=USER
-VCHR=VOUCHER
+* ACCT=ACCOUNT
+* ACTR=ACTOR
+* ASMT=ASSESSMENT
+* ANSR=ANSWER
+* BTCH=BATCH
+* BNDL=BUNDLE
+* CNTR=CENTER
+* CTNT=CONTENT
+* CMPS=CAMPUS
+* CFGN=CONFIGURATION
+* CORS=COURSE
+* CRCY=CURRENCY
+* DOCM=DOCUMENT
+* DPMT=DEPARTMENT
+* DSRT=DISTRICT
+* DSBM=DISBURSEMENT
+* ENRN=ENROLLMENT
+* EXMN=EXAMINATION
+* FLMN=FULFILLMENT
+* GROP=GROUP
+* INTR=INSTRUCTOR
+* INVC=INVOICE
+* LSSN=LESSON
+* MMBR=MEMBER
+* MODL=MODULE
+* PCPL=PRINCIPAL
+* PYBL=PAYABLE
+* PYMT=PAYMENT
+* PRJT=PROJECT
+* QSTN=QUESTION
+* RVBL=RECEIVABLE
+* RCPN=RECIPIENT
+* RGTN=REGISTRATION
+* RSPN=RESPONSE
+* SCTN=SECTION
+* SESN=SESSION
+* SNGL=SINGLE
+* STDN=STUDENT
+* SPRT = SUB_PROJECT
+* SMDL=SUB_MODULE/SAMDOL
+* SPPT=SUPPORT
+* TRSN = TRANSACTION
+* USER=USER
+* VCHR=VOUCHER
 
 
 

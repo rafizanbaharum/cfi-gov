@@ -1,8 +1,8 @@
 package net.canang.cfi.core.so.model;
 
 /**
- * @author rafizan.baharum
+ * @author canang.technologies
  * @since 10/2/13
  */
-public class CfStaff {
+public interface CfStaff extends CfActor{
 }
