@@ -24,12 +24,6 @@ public class CfVoucherImpl extends CfDocumentImpl implements CfVoucher, Serializ
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SEQ_CF_VCHR")
-    @SequenceGenerator(name = "SEQ_CF_VCHR", sequenceName = "SEQ_CF_VCHR", allocationSize = 1)
-    private Long id;
-
     @NotNull
     @Column(name = "TOTAL_AMOUNT")
     private BigDecimal totalAmount;
@@ -49,14 +43,6 @@ public class CfVoucherImpl extends CfDocumentImpl implements CfVoucher, Serializ
 
     @OneToMany(targetEntity = CfVoucherRecipientImpl.class, mappedBy = "voucher")
     private List<CfVoucherRecipient> recipients;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public BigDecimal getTotalAmount() {
         return totalAmount;

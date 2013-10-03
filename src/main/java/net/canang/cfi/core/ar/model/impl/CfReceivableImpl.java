@@ -24,12 +24,6 @@ public abstract class CfReceivableImpl extends CfDocumentImpl implements CfRecei
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SEQ_CF_RVBL")
-    @SequenceGenerator(name = "SEQ_CF_RVBL", sequenceName = "SEQ_CF_RVBL", allocationSize = 1)
-    private Long id;
-
     @Enumerated(value = EnumType.ORDINAL)
     @Column(name = "RECEIVABLE_TYPE")
     private CfReceivableType receivableType;
@@ -44,14 +38,6 @@ public abstract class CfReceivableImpl extends CfDocumentImpl implements CfRecei
 
     @OneToMany(targetEntity = CfReceivableTransactionImpl.class, mappedBy = "receivable", fetch = FetchType.LAZY)
     private List<CfReceivableTransaction> transactions;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public CfReceivableType getReceivableType() {
         return receivableType;

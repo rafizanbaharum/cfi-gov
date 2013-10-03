@@ -25,12 +25,6 @@ public class CfJournalImpl extends CfDocumentImpl implements CfJournal, Serializ
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SEQ_CF_JRNL")
-    @SequenceGenerator(name = "SEQ_CF_JRNL", sequenceName = "SEQ_CF_JRNL", allocationSize = 1)
-    private Long id;
-
     @Column(name = "TOTAL_AMOUNT")
     private BigDecimal totalAmount;
 
@@ -44,14 +38,6 @@ public class CfJournalImpl extends CfDocumentImpl implements CfJournal, Serializ
 
     @OneToMany(targetEntity = CfJournalTransactionImpl.class, mappedBy = "journal", fetch = FetchType.LAZY)
     private List<CfJournalTransaction> transactions;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public BigDecimal getTotalAmount() {
         return totalAmount;

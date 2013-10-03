@@ -31,7 +31,6 @@ public interface CfJournalDao {
 
     CfJournalTransaction findTransactionById(Long id);
 
-
     CfJournal findByReferenceNo(String referenceNo);
 
     CfJournal findByJournalNo(String journalNo);
@@ -64,11 +63,11 @@ public interface CfJournalDao {
     // CRUD
     // ====================================================================================================
 
-    CfJournal save(CfJournal journal, CfUser user);
+    void save(CfJournal journal, CfUser user);
 
-    CfJournal update(CfJournal journal, CfUser user);
+    void update(CfJournal journal, CfUser user);
 
-    CfJournal deactivate(CfJournal journal, CfUser user);
+    void deactivate(CfJournal journal, CfUser user);
 
     void remove(CfJournal journal, CfUser user);
 
