@@ -32,11 +32,11 @@ public interface CfAccountCodeDao {
     // CRUD
     // ====================================================================================================
 
-    CfAccountCode save(CfAccountCode account, CfUser user);
+    void save(CfAccountCode account, CfUser user);
 
-    CfAccountCode update(CfAccountCode account, CfUser user);
+    void update(CfAccountCode account, CfUser user);
 
-    CfAccountCode deactivate(CfAccountCode account, CfUser user);
+    void deactivate(CfAccountCode account, CfUser user);
 
     void remove(CfAccountCode account, CfUser user);
 }
