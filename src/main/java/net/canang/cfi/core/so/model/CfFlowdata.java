@@ -37,6 +37,12 @@ public class CfFlowdata {
     @Column(name = "VF_TS")
     private Date verifiedDate;
 
+    @Column(name = "CK_ID")
+    private Long checker;
+
+    @Column(name = "CK_TS")
+    private Date checkedDate;
+
     @Column(name = "AV_ID")
     private Long approver;
 
@@ -121,6 +127,22 @@ public class CfFlowdata {
 
     public void setVerifiedDate(Date verifiedDate) {
         this.verifiedDate = verifiedDate;
+    }
+
+    public Long getChecker() {
+        return checker;
+    }
+
+    public void setChecker(Long checker) {
+        this.checker = checker;
+    }
+
+    public Date getCheckedDate() {
+        return checkedDate;
+    }
+
+    public void setCheckedDate(Date checkedDate) {
+        this.checkedDate = checkedDate;
     }
 
     public Long getApprover() {
