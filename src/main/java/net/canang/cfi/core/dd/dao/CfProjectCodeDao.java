@@ -34,11 +34,11 @@ public interface CfProjectCodeDao {
     // CRUD
     // ====================================================================================================
 
-    CfProjectCode save(CfProjectCode project, CfUser user);
+    void save(CfProjectCode project, CfUser user);
 
-    CfProjectCode update(CfProjectCode project, CfUser user);
+    void update(CfProjectCode project, CfUser user);
 
-    CfProjectCode deactivate(CfProjectCode project, CfUser user);
+    void deactivate(CfProjectCode project, CfUser user);
 
     void remove(CfProjectCode project, CfUser user);
 

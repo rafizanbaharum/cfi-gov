@@ -38,12 +38,13 @@ public interface CfConfigurationDao {
     // CRUD
     // ====================================================================================================
 
-    CfConfiguration save(CfConfiguration configuration, CfUser user);
+    void save(CfConfiguration configuration, CfUser user);
 
-    CfConfiguration update(CfConfiguration configuration, CfUser user);
+    void update(CfConfiguration configuration, CfUser user);
 
-    CfConfiguration deactivate(CfConfiguration configuration, CfUser user);
+    void deactivate(CfConfiguration configuration, CfUser user);
 
     void remove(CfConfiguration configuration, CfUser user);
 
+    boolean isLocal();
 }

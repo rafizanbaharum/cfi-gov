@@ -29,9 +29,6 @@ import java.util.List;
 @Repository("journalDao")
 public class CfJournalDaoImpl extends DaoSupport<Long, CfJournal, CfJournalImpl> implements CfJournalDao {
 
-    /**
-     * logger
-     */
     private static final Logger log = Logger.getLogger(CfJournalDaoImpl.class);
 
     // =============================================================================

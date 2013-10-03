@@ -55,11 +55,11 @@ public interface CfSodoCodeDao {
     // CRUD
     // ====================================================================================================
 
-    CfSodoCode save(CfSodoCode sodo, CfUser user);
+    void save(CfSodoCode sodo, CfUser user);
 
-    CfSodoCode update(CfSodoCode sodo, CfUser user);
+    void update(CfSodoCode sodo, CfUser user);
 
-    CfSodoCode deactivate(CfSodoCode sodo, CfUser user);
+    void deactivate(CfSodoCode sodo, CfUser user);
 
     void remove(CfSodoCode sodo, CfUser user);
 

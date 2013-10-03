@@ -17,9 +17,11 @@ public interface CfDistrictCodeDao {
     // FINDER
     // ====================================================================================================
 
+    CfDistrictCode findById(Long id);
+
     CfDistrictCode findByCode(String code);
 
-    CfDistrictCode findById(Long id);
+    CfDistrictCode findByName(String name);
 
     List<CfDistrictCode> find();
 
@@ -35,12 +37,11 @@ public interface CfDistrictCodeDao {
     // CRUD
     // ====================================================================================================
 
-    CfDistrictCode save(CfDistrictCode districtCode, CfUser user);
+    void save(CfDistrictCode districtCode, CfUser user);
 
-    CfDistrictCode update(CfDistrictCode districtCode, CfUser user);
+    void update(CfDistrictCode districtCode, CfUser user);
 
-    CfDistrictCode deactivate(CfDistrictCode districtCode, CfUser user);
+    void deactivate(CfDistrictCode districtCode, CfUser user);
 
     void remove(CfDistrictCode districtCode, CfUser user);
-
 }

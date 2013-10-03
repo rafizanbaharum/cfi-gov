@@ -17,17 +17,17 @@ public interface CfStateCodeDao {
     // FINDER
     // ====================================================================================================
 
+    CfStateCode findById(Long id);
+
     CfStateCode findByCode(String code);
 
-    CfStateCode findById(Long id);
+    CfStateCode findByName(String name);
 
     List<CfStateCode> find();
 
     List<CfStateCode> find(Integer offset, Integer limit);
 
     List<CfStateCode> find(String filter, Integer offset, Integer limit);
-
-    List<CfStateCode> find(String filter, Integer offset, Integer limit, CfCountryCode countryCode);
 
     Integer count();
 
@@ -39,12 +39,11 @@ public interface CfStateCodeDao {
     // CRUD
     // ====================================================================================================
 
-    CfStateCode save(CfStateCode stateCode, CfUser user);
+    void save(CfStateCode stateCode, CfUser user);
 
-    CfStateCode update(CfStateCode stateCode, CfUser user);
+    void update(CfStateCode stateCode, CfUser user);
 
-    CfStateCode deactivate(CfStateCode stateCode, CfUser user);
+    void deactivate(CfStateCode stateCode, CfUser user);
 
     void remove(CfStateCode stateCode, CfUser user);
-
 }

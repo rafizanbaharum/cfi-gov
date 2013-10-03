@@ -5,6 +5,7 @@ import net.canang.cfi.core.so.model.CfPrincipal;
 import net.canang.cfi.core.so.model.CfUser;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * todo: comment
@@ -55,6 +56,10 @@ public interface CfCostCenterDao {
 
     List<CfCostCenter> find(List<CfPrincipal> principal, String filter, String[] funds, Integer offset, Integer limit);
 
+    List<CfCostCenter> find(Set<String> principals);
+
+    List<CfCostCenter> find(Set<String> principals, Integer offset, Integer limit);
+
     Integer count();
 
     Integer count(String filter);
@@ -63,19 +68,19 @@ public interface CfCostCenterDao {
 
     Integer count(List<CfPrincipal> principals);
 
+    Integer count(Set<String> principals);
+
     boolean isExist(String code);
 
     // ====================================================================================================
     // CRUD
     // ====================================================================================================
 
-    CfCostCenter save(CfCostCenter costCenter, CfUser user);
+    void save(CfCostCenter costCenter, CfUser user);
 
-    CfCostCenter update(CfCostCenter costCenter, CfUser user);
+    void update(CfCostCenter costCenter, CfUser user);
 
-    CfCostCenter deactivate(CfCostCenter costCenter, CfUser user);
+    void deactivate(CfCostCenter costCenter, CfUser user);
 
     void remove(CfCostCenter costCenter, CfUser user);
-
-
 }

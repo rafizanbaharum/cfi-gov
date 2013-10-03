@@ -38,11 +38,11 @@ public interface CfReferenceNoDao {
     // FINDER
     // ====================================================================================================
 
-    CfReferenceNo save(CfReferenceNo referenceNo, CfUser user);
+    void save(CfReferenceNo referenceNo, CfUser user);
 
-    CfReferenceNo update(CfReferenceNo referenceNo, CfUser user);
+    void update(CfReferenceNo referenceNo, CfUser user);
 
-    CfReferenceNo deactivate(CfReferenceNo referenceNo, CfUser user);
+    void deactivate(CfReferenceNo referenceNo, CfUser user);
 
     void remove(CfReferenceNo referenceNo, CfUser user);
 }

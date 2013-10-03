@@ -32,11 +32,11 @@ public interface CfFundCodeDao {
     // CRUD
     // ====================================================================================================
 
-    CfFundCode save(CfFundCode fund, CfUser user);
+    void save(CfFundCode fund, CfUser user);
 
-    CfFundCode update(CfFundCode fund, CfUser user);
+    void update(CfFundCode fund, CfUser user);
 
-    CfFundCode deactivate(CfFundCode fund, CfUser user);
+    void deactivate(CfFundCode fund, CfUser user);
 
     void remove(CfFundCode fund, CfUser user);
 

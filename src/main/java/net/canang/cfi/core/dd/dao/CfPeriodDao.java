@@ -12,7 +12,7 @@ import java.util.List;
  * @author canang.technologies
  */
 public interface CfPeriodDao {
-    
+
     // ====================================================================================================
     // FINDER
     // ====================================================================================================
@@ -43,12 +43,12 @@ public interface CfPeriodDao {
     // CRUD
     // ====================================================================================================
 
-    CfPeriod save(CfPeriod budget, CfUser user);
+    void save(CfPeriod budget, CfUser user);
 
-    CfPeriod update(CfPeriod budget, CfUser user);
+    void update(CfPeriod budget, CfUser user);
 
-    CfPeriod deactivate(CfPeriod budget, CfUser user);
+    void deactivate(CfPeriod budget, CfUser user);
 
     void remove(CfPeriod budget, CfUser user);
-    
+
 }

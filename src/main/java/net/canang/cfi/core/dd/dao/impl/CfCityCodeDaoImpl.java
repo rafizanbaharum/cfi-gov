@@ -18,9 +18,6 @@ import static net.canang.cfi.core.so.model.CfMetaState.ACTIVE;
  */
 public class CfCityCodeDaoImpl extends DaoSupport<Long, CfCityCode, CfCityCodeImpl> implements CfCityCodeDao {
 
-    /**
-     * logger
-     */
     private static final Logger log = Logger.getLogger(CfCityCodeDaoImpl.class);
 
     @Override

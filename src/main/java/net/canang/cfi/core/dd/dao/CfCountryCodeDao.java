@@ -16,9 +16,11 @@ public interface CfCountryCodeDao {
     // FINDER
     // ====================================================================================================
 
+    CfCountryCode findById(Long id);
+
     CfCountryCode findByCode(String code);
 
-    CfCountryCode findById(Long id);
+    CfCountryCode findByName(String name);
 
     List<CfCountryCode> find();
 
@@ -34,12 +36,11 @@ public interface CfCountryCodeDao {
     // CRUD
     // ====================================================================================================
 
-    CfCountryCode save(CfCountryCode countryCode, CfUser user);
+    void save(CfCountryCode countryCode, CfUser user);
 
-    CfCountryCode update(CfCountryCode countryCode, CfUser user);
+    void update(CfCountryCode countryCode, CfUser user);
 
-    CfCountryCode deactivate(CfCountryCode countryCode, CfUser user);
+    void deactivate(CfCountryCode countryCode, CfUser user);
 
     void remove(CfCountryCode countryCode, CfUser user);
-
 }

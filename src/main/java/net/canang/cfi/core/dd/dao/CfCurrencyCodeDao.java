@@ -32,11 +32,11 @@ public interface CfCurrencyCodeDao {
     // CRUD
     // ====================================================================================================
 
-    CfCurrencyCode save(CfCurrencyCode currency, CfUser user);
+    void save(CfCurrencyCode currency, CfUser user);
 
-    CfCurrencyCode update(CfCurrencyCode currency, CfUser user);
+    void update(CfCurrencyCode currency, CfUser user);
 
-    CfCurrencyCode deactivate(CfCurrencyCode currency, CfUser user);
+    void deactivate(CfCurrencyCode currency, CfUser user);
 
     void remove(CfCurrencyCode currency, CfUser user);
 

@@ -34,11 +34,11 @@ public interface CfSubProjectCodeDao {
     // CRUD
     // ====================================================================================================
 
-    CfSubProjectCode save(CfSubProjectCode subProject, CfUser user);
+    void save(CfSubProjectCode subProject, CfUser user);
 
-    CfSubProjectCode update(CfSubProjectCode subProject, CfUser user);
+    void update(CfSubProjectCode subProject, CfUser user);
 
-    CfSubProjectCode deactivate(CfSubProjectCode subProject, CfUser user);
+    void deactivate(CfSubProjectCode subProject, CfUser user);
 
     void remove(CfSubProjectCode subProject, CfUser user);
 
