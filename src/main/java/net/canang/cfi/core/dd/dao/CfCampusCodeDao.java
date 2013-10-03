@@ -33,11 +33,11 @@ public interface CfCampusCodeDao {
     // CRUD
     // ====================================================================================================
 
-    CfCampusCode save(CfCampusCode campus, CfUser user);
+    void save(CfCampusCode campus, CfUser user);
 
-    CfCampusCode update(CfCampusCode campus, CfUser user);
+    void update(CfCampusCode campus, CfUser user);
 
-    CfCampusCode deactivate(CfCampusCode campus, CfUser user);
+    void deactivate(CfCampusCode campus, CfUser user);
 
     void remove(CfCampusCode campus, CfUser user);
 

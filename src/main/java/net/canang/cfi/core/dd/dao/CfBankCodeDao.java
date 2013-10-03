@@ -35,11 +35,11 @@ public interface CfBankCodeDao {
     // CRUD
     // ====================================================================================================
 
-    CfBankCode save(CfBankCode bank, CfUser user);
+    void save(CfBankCode bank, CfUser user);
 
-    CfBankCode update(CfBankCode bank, CfUser user);
+    void update(CfBankCode bank, CfUser user);
 
-    CfBankCode deactivate(CfBankCode bank, CfUser user);
+    void deactivate(CfBankCode bank, CfUser user);
 
     void remove(CfBankCode bank, CfUser user);
 

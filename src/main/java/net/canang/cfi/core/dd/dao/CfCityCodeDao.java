@@ -17,9 +17,13 @@ public interface CfCityCodeDao {
     // FINDER
     // ====================================================================================================
 
+    CfCityCode findById(Long id);
+
     CfCityCode findByCode(String code);
 
-    CfCityCode findById(Long id);
+    CfCityCode findByName(String name);
+
+    CfCityCode findByNameAndState(String name, CfStateCode stateCode);
 
     List<CfCityCode> find();
 
@@ -42,11 +46,11 @@ public interface CfCityCodeDao {
     // CRUD
     // ====================================================================================================
 
-    CfCityCode save(CfCityCode cityCode, CfUser user);
+    void save(CfCityCode cityCode, CfUser user);
 
-    CfCityCode update(CfCityCode cityCode, CfUser user);
+    void update(CfCityCode cityCode, CfUser user);
 
-    CfCityCode deactivate(CfCityCode cityCode, CfUser user);
+    void deactivate(CfCityCode cityCode, CfUser user);
 
     void remove(CfCityCode cityCode, CfUser user);
 
