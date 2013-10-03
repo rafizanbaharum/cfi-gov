@@ -1,6 +1,6 @@
 package net.canang.cfi.core.dm.model;
 
-import net.canang.cfi.core.dd.model.CfConsumerInfo;
+import net.canang.cfi.core.dd.model.CfActorInfo;
 import net.canang.cfi.core.dd.model.CfPaymentInfo;
 import net.canang.cfi.core.so.model.CfActor;
 import net.canang.cfi.core.so.model.CfMetaObject;
@@ -31,9 +31,9 @@ public interface CfVoucherRecipient extends CfMetaObject {
 
     void setActor(CfActor actor);
 
-    CfConsumerInfo getConsumerInfo();
+    CfActorInfo getConsumerInfo();
 
-    void setConsumerInfo(CfConsumerInfo consumerInfo);
+    void setConsumerInfo(CfActorInfo consumerInfo);
 
     CfPaymentInfo getPaymentInfo();
 

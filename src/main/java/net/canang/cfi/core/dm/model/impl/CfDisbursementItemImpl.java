@@ -1,7 +1,7 @@
 package net.canang.cfi.core.dm.model.impl;
 
 import net.canang.cfi.core.dd.model.CfAddressInfo;
-import net.canang.cfi.core.dd.model.CfConsumerInfo;
+import net.canang.cfi.core.dd.model.CfActorInfo;
 import net.canang.cfi.core.dd.model.CfPaymentInfo;
 import net.canang.cfi.core.dm.model.*;
 import net.canang.cfi.core.so.model.CfActor;
@@ -63,7 +63,7 @@ public class CfDisbursementItemImpl implements CfDisbursementItem, Serializable 
     private CfVoucherRecipient voucherRecipient;
 
     @Embedded
-    private CfConsumerInfo consumerInfo;
+    private CfActorInfo consumerInfo;
 
     @Embedded
     private CfAddressInfo addressInfo;
@@ -150,11 +150,11 @@ public class CfDisbursementItemImpl implements CfDisbursementItem, Serializable 
         this.voucherRecipient = voucherRecipient;
     }
 
-    public CfConsumerInfo getConsumerInfo() {
+    public CfActorInfo getConsumerInfo() {
         return consumerInfo;
     }
 
-    public void setConsumerInfo(CfConsumerInfo consumerInfo) {
+    public void setConsumerInfo(CfActorInfo consumerInfo) {
         this.consumerInfo = consumerInfo;
     }
 

@@ -5,7 +5,7 @@ import net.canang.cfi.core.ap.model.CfInvoiceItem;
 import net.canang.cfi.core.ap.model.CfInvoiceType;
 import net.canang.cfi.core.ap.model.CfPayableType;
 import net.canang.cfi.core.dd.model.CfAddressInfo;
-import net.canang.cfi.core.dd.model.CfConsumerInfo;
+import net.canang.cfi.core.dd.model.CfActorInfo;
 import net.canang.cfi.core.dd.model.CfPaymentInfo;
 import net.canang.cfi.core.so.model.CfActor;
 import net.canang.cfi.core.so.model.impl.CfActorImpl;
@@ -27,15 +27,11 @@ public class CfInvoiceImpl extends CfSinglePayableImpl implements CfInvoice, Ser
     @Column(name = "INVOICE_TYPE")
     private CfInvoiceType invoiceType;
 
-    @ManyToOne(targetEntity = CfActorImpl.class)
-    @JoinColumn(name = "ACTOR_ID")
-    private CfActor actor;
-
     @OneToMany(targetEntity = CfInvoiceItemImpl.class, mappedBy = "invoice", fetch = FetchType.LAZY)
     private List<CfInvoiceItem> items;
 
     @Embedded
-    private CfConsumerInfo consumerInfo;
+    private CfActorInfo consumerInfo;
 
     @Embedded
     private CfAddressInfo addressInfo;
@@ -55,14 +51,6 @@ public class CfInvoiceImpl extends CfSinglePayableImpl implements CfInvoice, Ser
         this.invoiceType = invoiceType;
     }
 
-    public CfActor getActor() {
-        return actor;
-    }
-
-    public void setActor(CfActor actor) {
-        this.actor = actor;
-    }
-
     public List<CfInvoiceItem> getItems() {
         return items;
     }
@@ -71,11 +59,11 @@ public class CfInvoiceImpl extends CfSinglePayableImpl implements CfInvoice, Ser
         this.items = items;
     }
 
-    public CfConsumerInfo getConsumerInfo() {
+    public CfActorInfo getActorInfo() {
         return consumerInfo;
     }
 
-    public void setConsumerInfo(CfConsumerInfo consumerInfo) {
+    public void setActorInfo(CfActorInfo consumerInfo) {
         this.consumerInfo = consumerInfo;
     }
 

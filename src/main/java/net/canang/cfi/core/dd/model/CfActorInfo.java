@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @author canang.technologies
  */
 @Embeddable
-public interface CfConsumerInfo extends Serializable {
+public interface CfActorInfo extends Serializable {
 
     String getName();
 

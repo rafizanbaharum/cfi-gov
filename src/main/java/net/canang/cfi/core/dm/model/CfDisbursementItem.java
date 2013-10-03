@@ -1,7 +1,7 @@
 package net.canang.cfi.core.dm.model;
 
 import net.canang.cfi.core.dd.model.CfAddressInfo;
-import net.canang.cfi.core.dd.model.CfConsumerInfo;
+import net.canang.cfi.core.dd.model.CfActorInfo;
 import net.canang.cfi.core.dd.model.CfPaymentInfo;
 import net.canang.cfi.core.so.model.CfActor;
 import net.canang.cfi.core.so.model.CfMetaObject;
@@ -23,7 +23,7 @@ public interface CfDisbursementItem extends CfMetaObject {
 
     void setAmount(BigDecimal amount);
 
-    void setConsumerInfo(CfConsumerInfo consumerInfo);
+    void setConsumerInfo(CfActorInfo consumerInfo);
 
     CfPaymentInfo getPaymentInfo();
 
@@ -37,7 +37,7 @@ public interface CfDisbursementItem extends CfMetaObject {
 
     void setActor(CfActor actor);
 
-    CfConsumerInfo getConsumerInfo();
+    CfActorInfo getConsumerInfo();
 
     CfDisbursement getDisbursement();
 

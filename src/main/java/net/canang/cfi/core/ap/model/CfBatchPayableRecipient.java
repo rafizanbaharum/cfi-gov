@@ -2,14 +2,15 @@ package net.canang.cfi.core.ap.model;
 
 import net.canang.cfi.core.dd.model.CfActorInfo;
 import net.canang.cfi.core.so.model.CfActor;
+import net.canang.cfi.core.so.model.CfMetaObject;
 
 import java.util.List;
 
 /**
- * @author canang.technologies
- * @since 10/2/13
+ * @author rafizan.baharum
+ * @since 10/3/13
  */
-public interface CfSinglePayable<I extends CfSinglePayableItem> extends CfPayable {
+public interface CfBatchPayableRecipient extends CfMetaObject {
 
     CfActor getActor();
 
@@ -19,8 +20,6 @@ public interface CfSinglePayable<I extends CfSinglePayableItem> extends CfPayabl
 
     void setActorInfo(CfActorInfo recipient);
 
-    List<I> getItems();
-
-    void setItems(List<I> items);
+    List<CfBatchPayableItem> getItems();
 
 }

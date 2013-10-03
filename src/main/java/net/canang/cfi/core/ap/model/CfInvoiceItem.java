@@ -1,7 +1,6 @@
 package net.canang.cfi.core.ap.model;
 
 import net.canang.cfi.core.dd.model.CfSodoCode;
-import net.canang.cfi.core.so.model.CfMetaObject;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -11,7 +10,7 @@ import java.util.Date;
  *
  * @author canang.technologies
  */
-public interface CfInvoiceItem extends CfMetaObject {
+public interface CfInvoiceItem extends CfSinglePayableItem {
 
     String getInvoiceNo();
 
