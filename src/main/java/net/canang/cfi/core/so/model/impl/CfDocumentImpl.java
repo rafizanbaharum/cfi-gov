@@ -30,6 +30,12 @@ public abstract class CfDocumentImpl implements CfDocument {
     @Column(name = "DESCRIPTION")
     private String description;
 
+    @Column(name = "CANCEL_COMMENT")
+    private String cancelComment;
+
+    @Column(name = "REMOVE_COMMENT")
+    private String removeComment;
+
     @Embedded
     private CfMetadata metadata;
 
@@ -66,6 +72,22 @@ public abstract class CfDocumentImpl implements CfDocument {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCancelComment() {
+        return cancelComment;
+    }
+
+    public void setCancelComment(String cancelComment) {
+        this.cancelComment = cancelComment;
+    }
+
+    public String getRemoveComment() {
+        return removeComment;
+    }
+
+    public void setRemoveComment(String removeComment) {
+        this.removeComment = removeComment;
     }
 
     public CfMetadata getMetadata() {

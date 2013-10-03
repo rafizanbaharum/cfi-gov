@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions id="definitions"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:activiti="http://activiti.org/bpmn"
+             targetNamespace="JM">
+
+    <!--
+    ====================================================================================================
+    == VARIABLE:
+    == journalId: journal id
+    ====================================================================================================
+    -->
+
+    <process id="jm_manual_journal_workflow" name="JM Manual Workflow">
+
+        <startEvent id="start"/>
+
+        <sequenceFlow id="flow1.1" sourceRef="start" targetRef="manualJournal_draft_ST"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : DRAFTED
+        == SERVICE TASK : draft a journal
+        == USER TASK :
+        ====================================================================================================
+        -->
+
+        <serviceTask id="manualJournal_draft_ST"
+                     activiti:expression="#{manualJournal_draft_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow2.1" sourceRef="manualJournal_draft_ST" targetRef="manualJournal_draft_UT"/>
+
+        <userTask id="manualJournal_draft_UT" name="net.canang.cfi.core.jm.model.FsJournal:MANUAL:DRAFTED"
+                  activiti:assignee="${userCreator}">
+            <documentation>
+                Draft Journal Manual
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow2.2" sourceRef="manualJournal_draft_UT" targetRef="manualJournal_remove_ST">
+            <conditionExpression>${removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <sequenceFlow id="flow2.3" sourceRef="manualJournal_draft_UT" targetRef="manualJournal_register_ST">
+            <conditionExpression>${!removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <!--
+        ====================================================================================================
+        == STATE : REGISTERED
+        == SERVICE TASK : register a journal
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="manualJournal_register_ST"
+                     activiti:expression="#{manualJournal_register_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow3.1" sourceRef="manualJournal_register_ST" targetRef="manualJournal_register_UT"/>
+
+        <userTask id="manualJournal_register_UT" name="net.canang.cfi.core.jm.model.FsJournal:MANUAL:REGISTERED"
+                  activiti:candidateGroups="${journalRouterService.findRegistererCandidate(journalId)}">
+            <documentation>
+                Register Journal
+            </documentation>
+
+        </userTask>
+
+        <sequenceFlow id="flow3.2" sourceRef="manualJournal_register_UT" targetRef="manualJournal_approve_ST">
+            <conditionExpression>${!removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <sequenceFlow id="flow3.3" sourceRef="manualJournal_register_UT" targetRef="manualJournal_remove_ST">
+            <conditionExpression>${removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <!--
+        ====================================================================================================
+        == STATE : REMOVED
+        == SERVICE TASK : removed a journal
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="manualJournal_remove_ST"
+                     activiti:expression="#{manualJournal_remove_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow5.1" sourceRef="manualJournal_remove_ST" targetRef="end"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : APPROVED
+        == SERVICE TASK : approve a journal
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="manualJournal_approve_ST"
+                     activiti:expression="#{manualJournal_approve_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow6.1" sourceRef="manualJournal_approve_ST" targetRef="manualJournal_complete_ST"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : COMPLETED
+        == SERVICE TASK : complete a journal
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="manualJournal_complete_ST"
+                     activiti:expression="#{manualJournal_complete_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow8.1" sourceRef="manualJournal_complete_ST" targetRef="end"/>
+
+        <!--
+            ====================================================================================================
+            == STATE : END
+            ====================================================================================================
+            -->
+        <endEvent id="end"/>
+
+    </process>
+</definitions>

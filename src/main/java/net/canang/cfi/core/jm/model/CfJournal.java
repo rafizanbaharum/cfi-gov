@@ -13,6 +13,10 @@ import java.util.List;
  */
 public interface CfJournal extends CfDocument {
 
+    String getJournalNo();
+
+    void setJournalNo(String journalNo);
+
     BigDecimal getTotalAmount();
 
     void setTotalAmount(BigDecimal totalAmount);
@@ -28,5 +32,4 @@ public interface CfJournal extends CfDocument {
     List<CfJournalTransaction> getTransactions();
 
     void setTransactions(List<CfJournalTransaction> transactions);
-
 }

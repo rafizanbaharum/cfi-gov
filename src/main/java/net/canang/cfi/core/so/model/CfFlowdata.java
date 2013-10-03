@@ -43,6 +43,18 @@ public class CfFlowdata {
     @Column(name = "AV_TS")
     private Date approvedDate;
 
+    @Column(name = "RM_ID")
+    private Long remover;
+
+    @Column(name = "RM_TS")
+    private Date removedDate;
+
+    @Column(name = "CL_ID")
+    private Long canceller;
+
+    @Column(name = "CL_TS")
+    private Date cancelledDate;
+
     @Enumerated(value = EnumType.ORDINAL)
     @Column(name = "F_ST")
     private CfFlowState state;
@@ -125,6 +137,38 @@ public class CfFlowdata {
 
     public void setApprovedDate(Date approvedDate) {
         this.approvedDate = approvedDate;
+    }
+
+    public Long getRemover() {
+        return remover;
+    }
+
+    public void setRemover(Long remover) {
+        this.remover = remover;
+    }
+
+    public Date getRemovedDate() {
+        return removedDate;
+    }
+
+    public void setRemovedDate(Date removedDate) {
+        this.removedDate = removedDate;
+    }
+
+    public Long getCanceller() {
+        return canceller;
+    }
+
+    public void setCanceller(Long canceller) {
+        this.canceller = canceller;
+    }
+
+    public Date getCancelledDate() {
+        return cancelledDate;
+    }
+
+    public void setCancelledDate(Date cancelledDate) {
+        this.cancelledDate = cancelledDate;
     }
 
     public CfFlowState getState() {

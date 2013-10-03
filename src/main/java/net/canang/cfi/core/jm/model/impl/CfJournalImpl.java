@@ -25,6 +25,9 @@ public class CfJournalImpl extends CfDocumentImpl implements CfJournal, Serializ
 
     private static final long serialVersionUID = 1L;
 
+    @Column(name = "JOURNAL_NO")
+    private String journalNo;
+
     @Column(name = "TOTAL_AMOUNT")
     private BigDecimal totalAmount;
 
@@ -38,6 +41,14 @@ public class CfJournalImpl extends CfDocumentImpl implements CfJournal, Serializ
 
     @OneToMany(targetEntity = CfJournalTransactionImpl.class, mappedBy = "journal", fetch = FetchType.LAZY)
     private List<CfJournalTransaction> transactions;
+
+    public String getJournalNo() {
+        return journalNo;
+    }
+
+    public void setJournalNo(String journalNo) {
+        this.journalNo = journalNo;
+    }
 
     public BigDecimal getTotalAmount() {
         return totalAmount;

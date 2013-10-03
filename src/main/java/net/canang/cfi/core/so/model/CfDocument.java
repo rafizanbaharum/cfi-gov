@@ -18,5 +18,13 @@ public interface CfDocument extends CfFlowObject {
 
     void setDescription(String description);
 
+    String getCancelComment();
+
+    void setCancelComment(String cancelComment);
+
+    String getRemoveComment();
+
+    void setRemoveComment(String removeComment);
+
     String getPath();
 }
