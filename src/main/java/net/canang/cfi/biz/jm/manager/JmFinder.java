@@ -29,17 +29,17 @@ public interface JmFinder {
 
     List<CfJournal> findJournalsBySourceNo(String sourceNo);
 
-    List<CfJournal> findJournals(CfJournalType type, Integer ofCfet, Integer limit);
+    List<CfJournal> findJournals(CfJournalType type, Integer offset, Integer limit);
 
     List<CfJournal> findJournals(CfJournalType type, CfCostCenter costCenter);
 
-    List<CfJournal> findJournals(CfJournalType type, CfCostCenter costCenter, Integer ofCfet, Integer limit);
+    List<CfJournal> findJournals(CfJournalType type, CfCostCenter costCenter, Integer offset, Integer limit);
 
     List<CfJournalTransaction> findJournalTransactions(CfJournal journal);
 
     List<CfJournalTransaction> findJournalTransactions(CfJournal journal, boolean voteDetailed);
 
-    List<CfJournalTransaction> findJournalTransactions(CfJournal journal, Integer ofCfet, Integer limit);
+    List<CfJournalTransaction> findJournalTransactions(CfJournal journal, Integer offset, Integer limit);
 
 
     // ==================================================================================================== //

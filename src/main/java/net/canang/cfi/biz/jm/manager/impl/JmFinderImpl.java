@@ -54,8 +54,8 @@ public class JmFinderImpl implements JmFinder {
     }
 
     @Override
-    public List<CfJournal> findJournals(CfJournalType type, Integer ofCfet, Integer limit) {
-        return journalDao.find(type, ofCfet, limit);
+    public List<CfJournal> findJournals(CfJournalType type, Integer offset, Integer limit) {
+        return journalDao.find(type, offset, limit);
     }
 
     @Override
@@ -64,13 +64,13 @@ public class JmFinderImpl implements JmFinder {
     }
 
     @Override
-    public List<CfJournal> findJournals(CfJournalType type, CfCostCenter costCenter, Integer ofCfet, Integer limit) {
+    public List<CfJournal> findJournals(CfJournalType type, CfCostCenter costCenter, Integer offset, Integer limit) {
         return journalDao.find(type, costCenter);
     }
 
     @Override
-    public List<CfJournalTransaction> findJournalTransactions(CfJournal journal, Integer ofCfet, Integer limit) {
-        return journalDao.findTransactions(journal, ofCfet, limit);
+    public List<CfJournalTransaction> findJournalTransactions(CfJournal journal, Integer offset, Integer limit) {
+        return journalDao.findTransactions(journal, offset, limit);
     }
 
     @Override

@@ -11,6 +11,7 @@ public enum CfFlowState {
     REQUESTED,
     REGISTERED,
     VERIFIED,
+    CHECKED,
     APPROVED,
     COMPLETED,
     REMOVED,
