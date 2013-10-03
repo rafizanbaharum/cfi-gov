@@ -52,9 +52,9 @@ public interface CfVoteDao {
 
     Integer count();
 
-    Integer count(CfFundCode fund, CfDepartmentCode department, CfProjectCode project, CfSubProjectCode subProjectCode);
-
     Integer count(String filter);
+
+    Integer count(CfFundCode fund, CfDepartmentCode department, CfProjectCode project, CfSubProjectCode subProjectCode);
 
     BigDecimal getVoteBalance(CfPeriod period, CfSodoCode sodo);
 
@@ -64,11 +64,11 @@ public interface CfVoteDao {
     // CRUD
     // ====================================================================================================
 
-    CfVote save(CfVote vote, CfUser user);
+    void save(CfVote vote, CfUser user);
 
-    CfVote update(CfVote vote, CfUser user);
+    void update(CfVote vote, CfUser user);
 
-    CfVote deactivate(CfVote vote, CfUser user);
+    void deactivate(CfVote vote, CfUser user);
 
     void remove(CfVote vote, CfUser user);
 
@@ -78,11 +78,9 @@ public interface CfVoteDao {
 
     List<CfVoteTransaction> findTransactions(CfVote vote);
 
-    List<String> findInvalidTransactions(Integer offset, Integer limit);
-
     List<CfVoteTransaction> findTransactions(CfVote vote, Integer offset, Integer limit);
 
-    List<CfVoteTransaction> findTransactions(String reference);
+    List<CfVoteTransaction> findTransactions(String referenceNo);
 
     List<CfVoteTransaction> findTransactions(CfVote vote, CfSodoCode spender, Integer offset, Integer limit);
 
@@ -94,20 +92,20 @@ public interface CfVoteDao {
 
     boolean isExists(CfPeriod period, CfSodoCode sodo);
 
-    BigDecimal checkBalance(CfVoteTransactionType currentBalance, CfVote vote);
+    BigDecimal checkBalance(CfVoteTransactionType transactionType, CfVote vote);
 
     BigDecimal checkShadowBalance(CfVote vote);
 
     BigDecimal checkCurrentBalance(CfVote vote);
 
-    BigDecimal checkBalance(CfVoteTransactionType currentBalance, CfVote vote, boolean positiveTx);
+    BigDecimal checkBalance(CfVoteTransactionType transactionType, CfVote vote, boolean positiveTx);
 
-    BigDecimal checkBalance(CfVoteTransactionType currentBalance, CfVote vote, Date startDate, Date endDate);
+    BigDecimal checkBalance(CfVoteTransactionType transactionType, CfVote vote, Date startDate, Date endDate);
+
+    BigDecimal checkBalance(CfVoteTransactionType transactionType, CfVote vote, Date startDate, Date endDate, boolean positiveTx);
 
     BigDecimal checkShadowBalance(CfVote vote, Date startDate, Date endDate);
 
     BigDecimal checkCurrentBalance(CfVote vote, Date startDate, Date endDate);
-
-    BigDecimal checkBalance(CfVoteTransactionType currentBalance, CfVote vote, Date startDate, Date endDate, boolean positiveTx);
 
 }
