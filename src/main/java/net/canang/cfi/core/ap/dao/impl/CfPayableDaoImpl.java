@@ -6,6 +6,7 @@ import net.canang.cfi.core.ap.model.CfPayableTransaction;
 import net.canang.cfi.core.ap.model.impl.CfPayableImpl;
 import net.canang.cfi.core.ap.model.impl.CfPayableTransactionImpl;
 import net.canang.cfi.core.dd.model.CfCostCenter;
+import net.canang.cfi.core.dm.model.CfVoucher;
 import net.canang.cfi.core.so.dao.DaoSupport;
 import net.canang.cfi.core.so.model.CfMetaState;
 import net.canang.cfi.core.so.model.CfMetadata;
@@ -32,11 +33,17 @@ public class CfPayableDaoImpl extends DaoSupport<Long, CfPayable, CfPayableImpl>
     @Override
     public CfPayable findPayableByReferenceNo(String referenceNo) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select r from CfPayable r where " +
-                "r.referenceNo = :referenceNo");
+        Query query = session.createQuery("select p from CfPayable p where " +
+                "p.referenceNo = :referenceNo");
         query.setString("referenceNo", referenceNo);
         query.setCacheable(true);
         return (CfPayable) query.uniqueResult();
+    }
+
+    @Override
+    public CfVoucher findVoucherByPayable(CfPayable payable) {
+        Session session = sessionFactory.getCurrentSession();
+        return ((CfPayable) session.get(CfPayableImpl.class, payable.getId())).getVoucher();
     }
 
     @Override
@@ -48,8 +55,8 @@ public class CfPayableDaoImpl extends DaoSupport<Long, CfPayable, CfPayableImpl>
     @Override
     public List<CfPayable> findPayables(CfCostCenter request) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select r from CfPayable r  where (" +
-                "and r.requester = :requester " +
+        Query query = session.createQuery("select p from CfPayable p  where (" +
+                "and p.requester = :requester " +
                 "and i.metadata.state = :state " +
                 "order by i.id desc");
         query.setEntity("requester", request);
@@ -60,10 +67,10 @@ public class CfPayableDaoImpl extends DaoSupport<Long, CfPayable, CfPayableImpl>
     @Override
     public List<CfPayable> findPayables(CfCostCenter request, Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select r from CfPayable r  where " +
-                "r.requester = :requester " +
-                "and r.metadata.state = :state " +
-                "order by r.id desc");
+        Query query = session.createQuery("select p from CfPayable p  where " +
+                "p.requester = :requester " +
+                "and p.metadata.state = :state " +
+                "order by p.id desc");
         query.setEntity("requester", request);
         query.setInteger("state", CfMetaState.ACTIVE.ordinal());
         query.setFirstResult(offset);
@@ -102,8 +109,8 @@ public class CfPayableDaoImpl extends DaoSupport<Long, CfPayable, CfPayableImpl>
     @Override
     public Integer countPayable(CfCostCenter request) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select count(r) from CfPayable r where " +
-                "r.metadata.state = :state"
+        Query query = session.createQuery("select count(p) from CfPayable p where " +
+                "p.metadata.state = :state"
         );
         query.setInteger("state", CfMetaState.ACTIVE.ordinal());
         return ((Long) query.uniqueResult()).intValue();

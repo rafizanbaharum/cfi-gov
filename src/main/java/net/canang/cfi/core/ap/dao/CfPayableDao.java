@@ -37,6 +37,8 @@ public interface CfPayableDao {
 
     Integer countPayable(CfCostCenter request);
 
+    Integer countTransaction(CfPayable payable);
+
     // ====================================================================================================
     // CRUD
     // ====================================================================================================
