@@ -59,7 +59,7 @@
         <sequenceFlow id="flow3.1" sourceRef="counterReceipt_register_ST" targetRef="counterReceipt_register_UT"/>
 
         <userTask id="counterReceipt_register_UT" name="net.canang.cfi.core.ar.model.CfReceipt:COUNTER:REGISTERED"
-                  activiti:candidateGroups="${receiptRouterService.findRegistererCandidate(receiptId)}">
+                  activiti:candidateGroups="${receiptRouter.findRegistererCandidates(receiptId)}">
             <documentation>
                 Register Receipt / Daftar Resit
             </documentation>

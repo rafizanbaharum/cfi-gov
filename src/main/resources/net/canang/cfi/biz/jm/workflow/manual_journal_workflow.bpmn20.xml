@@ -58,7 +58,7 @@
         <sequenceFlow id="flow3.1" sourceRef="manualJournal_register_ST" targetRef="manualJournal_register_UT"/>
 
         <userTask id="manualJournal_register_UT" name="net.canang.cfi.core.jm.model.FsJournal:MANUAL:REGISTERED"
-                  activiti:candidateGroups="${journalRouterService.findRegistererCandidate(journalId)}">
+                  activiti:candidateGroups="${journalRouter.findRegistererCandidates(journalId)}">
             <documentation>
                 Register Journal
             </documentation>

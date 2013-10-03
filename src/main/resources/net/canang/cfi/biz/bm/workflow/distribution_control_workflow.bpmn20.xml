@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions id="definitions"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:activiti="http://activiti.org/bpmn"
+             targetNamespace="BM">
+
+
+    <!--
+    ====================================================================================================
+    == VARIABLE:
+    == controlId: control id
+    ======================================================================================================
+    -->
+
+    <process id="bm_distribution_control_workflow" name="BM Distribution Control Workflow">
+
+        <startEvent id="start"/>
+
+        <sequenceFlow id="flow1.1" sourceRef="start" targetRef="distributionControl_draft_ST"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : DRAFTED
+        == SERVICE TASK :
+        == USER TASK :
+        ====================================================================================================
+        -->
+
+        <serviceTask id="distributionControl_draft_ST"
+                     activiti:expression="${distributionControl_draft_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow2.1" sourceRef="distributionControl_draft_ST"
+                      targetRef="distributionControl_draft_UT"/>
+
+        <userTask id="distributionControl_draft_UT" name="net.canang.cfi.core.bm.model.CfControl:DISTRIBUTION:DRAFTED"
+                  activiti:assignee="${userCreator}">
+            <documentation>
+                Draft Agihan Peruntukan
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow2.2" sourceRef="distributionControl_draft_UT" targetRef="distributionControl_remove_ST">
+            <conditionExpression>${removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <sequenceFlow id="flow2.3" sourceRef="distributionControl_draft_UT" targetRef="distributionControl_register_ST">
+            <conditionExpression>${!removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <!--
+            ====================================================================================================
+            == STATE : REGISTERED
+            == SERVICE TASK :
+            == USER TASK :
+            ====================================================================================================
+            -->
+
+        <serviceTask id="distributionControl_register_ST"
+                     activiti:expression="#{distributionControl_register_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow3.1" sourceRef="distributionControl_register_ST"
+                      targetRef="distributionControl_register_UT"/>
+
+        <userTask id="distributionControl_register_UT"
+                  name="net.canang.cfi.core.bm.model.CfControl:DISTRIBUTION:REGISTERED"
+                  activiti:candidateGroups="${controlRouter.findRegistererCandidates(controlId)}">
+            <documentation>
+                Register Peruntukan @Bendahari
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow3.2" sourceRef="distributionControl_register_UT"
+                      targetRef="distributionControl_remove_ST">
+            <conditionExpression>${removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <sequenceFlow id="flow3.3" sourceRef="distributionControl_register_UT"
+                      targetRef="distributionControl_verify_ST">
+            <conditionExpression>${!removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <!--
+            ====================================================================================================
+            == STATE : VERIFIED
+            == SERVICE TASK :
+            == USER TASK :
+            ====================================================================================================
+            -->
+
+        <serviceTask id="distributionControl_verify_ST"
+                     activiti:expression="#{distributionControl_verify_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow4.1" sourceRef="distributionControl_verify_ST"
+                      targetRef="distributionControl_verify_UT"/>
+
+        <userTask id="distributionControl_verify_UT"
+                  name="net.canang.cfi.core.bm.model.CfControl:DISTRIBUTION:VERIFIED"
+                  activiti:candidateGroups="${controlRouter.findVerifierCandidates(controlId)}">
+            <documentation>
+                Verify Agihan Am @ Bendahari
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow4.2" sourceRef="distributionControl_verify_UT"
+                      targetRef="distributionControl_prepare_ST"/>
+
+
+        <!--
+        ====================================================================================================
+        == STATE : REMOVED
+        == SERVICE TASK : removed a control
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="distributionControl_remove_ST"
+                     activiti:expression="#{distributionControl_remove_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow5.1" sourceRef="distributionControl_remove_ST" targetRef="end"/>
+
+
+        <!--
+        ====================================================================================================
+        == STATE : CHECKED
+        == SERVICE TASK :
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="additionControl_checked_ST"
+                     activiti:expression="#{additionControl_checked_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow6.1" sourceRef="additionControl_checked_ST"
+                      targetRef="additionControl_checked_UT"/>
+
+        <userTask id="additionControl_checked_UT" name="net.canang.cfi.core.bm.model.CfControl:DISTRIBUTION:CHECKED"
+                  activiti:candidateGroups="${controlRouter.findCheckerCandidates(controlId)}">
+            <documentation>
+                Checked Budget Addition Sebagai @ PTJ
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow6.2" sourceRef="additionControl_checked_UT"
+                      targetRef="additionControl_approve_ST"/>
+
+        <!--
+            ====================================================================================================
+            == STATE : APPROVED
+            == SERVICE TASK :
+            == USER TASK :
+            ====================================================================================================
+            -->
+
+        <serviceTask id="additionControl_approve_ST"
+                     activiti:expression="#{additionControl_approve_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow7.1" sourceRef="additionControl_approve_ST"
+                      targetRef="additionControl_complete_ST"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : COMPLETED
+        == SERVICE TASK : complete a budget control
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="distributionControl_complete_ST"
+                     activiti:expression="#{distributionControl_complete_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow8.1" sourceRef="distributionControl_complete_ST" targetRef="end"/>
+
+        <!-- ==================================================================================================== -->
+        <!-- END -->
+        <!-- ==================================================================================================== -->
+
+        <endEvent id="end"/>
+
+    </process>
+</definitions>
