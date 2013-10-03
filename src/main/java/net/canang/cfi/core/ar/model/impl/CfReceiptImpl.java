@@ -34,7 +34,7 @@ public class CfReceiptImpl extends CfReceivableImpl implements CfReceipt, Serial
     private CfPayType payType;
 
     @ManyToOne(targetEntity = CfCurrencyCodeImpl.class)
-    @JoinColumn(name = "CURRENCY_ID")
+    @JoinColumn(name = "CURRENCY_CODE_ID")
     private CfCurrencyCode currencyCode;
 
     @NotNull

@@ -38,7 +38,7 @@ public class CfCityCodeImpl implements CfCityCode, Serializable {
     private String description;
 
     @OneToOne(targetEntity = CfStateCodeImpl.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "STATE_ID")
+    @JoinColumn(name = "CITY_CODE_ID")
     private CfStateCode stateCode;
 
     @Embedded

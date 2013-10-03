@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author canang.technologies
  */
-public interface CfReceiptDao extends CfReceivableDao {
+public interface CfReceiptDao {
 
     // ====================================================================================================
     // HELPER
@@ -74,11 +74,11 @@ public interface CfReceiptDao extends CfReceivableDao {
     // CRUD
     // ====================================================================================================
 
-    CfReceipt save(CfReceipt receipt, CfUser user);
+    void save(CfReceipt receipt, CfUser user);
 
-    CfReceipt update(CfReceipt receipt, CfUser user);
+    void update(CfReceipt receipt, CfUser user);
 
-    CfReceipt deactivate(CfReceipt receipt, CfUser user);
+    void deactivate(CfReceipt receipt, CfUser user);
 
     void remove(CfReceipt receipt, CfUser user);
 

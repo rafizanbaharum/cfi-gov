@@ -50,7 +50,7 @@ public class CfPayableItemImpl implements CfInvoiceItem, Serializable {
     private CfInvoice invoice;
 
     @ManyToOne(targetEntity = CfSodoCodeImpl.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "SODO_ID")
+    @JoinColumn(name = "SODO_CODE_ID")
     private CfSodoCode sodoCode;
 
     @Embedded

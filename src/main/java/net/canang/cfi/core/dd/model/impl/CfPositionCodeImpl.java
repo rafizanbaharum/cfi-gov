@@ -37,7 +37,7 @@ public class CfPositionCodeImpl {
     private String description;
 
     @OneToOne(targetEntity = CfStateCodeImpl.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "STATE_ID")
+    @JoinColumn(name = "STATE_CODE_ID")
     private CfStateCode stateCode;
 
     @Embedded

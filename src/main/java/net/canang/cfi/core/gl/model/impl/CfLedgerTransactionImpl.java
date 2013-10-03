@@ -50,7 +50,7 @@ public class CfLedgerTransactionImpl implements CfLedgerTransaction, Serializabl
     private CfPeriod period;
 
     @ManyToOne(targetEntity = CfSodoCodeImpl.class)
-    @JoinColumn(name = "SODO_ID")
+    @JoinColumn(name = "SODO_CODE_ID")
     private CfSodoCode sodoCode;
 
     @Embedded

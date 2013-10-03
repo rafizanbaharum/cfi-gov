@@ -37,7 +37,7 @@ public class CfVoucherTransactionImpl implements CfVoucherTransaction, Serializa
     private CfVoucherRecipient recipient;
 
     @ManyToOne(targetEntity = CfSodoCodeImpl.class)
-    @JoinColumn(name = "SODO_ID")
+    @JoinColumn(name = "SODO_CODE_ID")
     private CfSodoCode sodoCode;
 
     @ManyToOne(targetEntity = CfPeriodImpl.class)

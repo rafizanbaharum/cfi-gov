@@ -54,7 +54,7 @@ public class CfVoteImpl implements CfVote, Serializable {
     private CfPeriod period;
 
     @ManyToOne(targetEntity = CfSodoCodeImpl.class)
-    @JoinColumn(name = "SODO_ID")
+    @JoinColumn(name = "SODO_CODE_ID")
     private CfSodoCode sodoCode;
 
     @OneToMany(targetEntity = CfVoteTransactionImpl.class, mappedBy = "vote", fetch = FetchType.LAZY)

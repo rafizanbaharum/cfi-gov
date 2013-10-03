@@ -38,7 +38,7 @@ public class CfStaffImpl extends CfActorImpl implements CfStaff {
     private Date endDate;
 
     @OneToOne(targetEntity = CfPositionCodeImpl.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "POSITION_ID")
+    @JoinColumn(name = "POSITION_CODE_ID")
     private CfPositionCode positionCode;
 
     public CfStaffImpl() {
