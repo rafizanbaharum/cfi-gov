@@ -1,12 +1,12 @@
 package net.canang.cfi.biz.vm.manager;
 
-import net.canang.cfi.core.jm.model.CfJournal;
+import net.canang.cfi.core.so.model.CfDocument;
 
 /**
  * @author rafizan.baharum
  * @since 10/3/13
  */
-public class VmManager {
-    public void post(CfJournal journal) {
-    }
+public interface VmManager {
+    
+    public void post(CfDocument document);
 }

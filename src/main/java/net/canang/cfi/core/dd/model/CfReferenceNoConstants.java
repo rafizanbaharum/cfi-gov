@@ -6,6 +6,8 @@ package net.canang.cfi.core.dd.model;
  */
 public class CfReferenceNoConstants {
 
-    public static final String JOURNAL_REFERENCE_NO = "CjJournal.referenceNo";
-    public static final String JOURNAL_JOURNAL_NO = "CjJournal.journalNo";
+    public static final String JOURNAL_REFERENCE_NO = "CfJournal.referenceNo";
+    public static final String JOURNAL_JOURNAL_NO = "CfJournal.journalNo";
+    public static final String RECEIPT_RECEIPT_NO = "CfReceipt.referenceNo";
+    public static final String RECEIPT_RECEIPT_NO = "CfReceipt.receiptNo";
 }
