@@ -1,6 +1,8 @@
 package net.canang.cfi.core.ap.model;
 
 import net.canang.cfi.core.dd.model.CfActorInfo;
+import net.canang.cfi.core.dd.model.CfAddressInfo;
+import net.canang.cfi.core.dd.model.CfPaymentInfo;
 import net.canang.cfi.core.so.model.CfActor;
 import net.canang.cfi.core.so.model.CfMetaObject;
 
@@ -20,6 +22,15 @@ public interface CfBatchPayableRecipient extends CfMetaObject {
 
     void setActorInfo(CfActorInfo recipient);
 
+    CfAddressInfo getAddressInfo();
+
+    void setAddressInfo(CfAddressInfo addressInfo);
+
+    CfPaymentInfo getPaymentInfo();
+
+    void setPaymentInfo(CfPaymentInfo paymentInfo);
+
     List<CfBatchPayableItem> getItems();
+
 
 }

@@ -1,10 +1,10 @@
 package net.canang.cfi.biz.jm.manager.workflow.task;
 
-import net.canang.cfi.biz.dd.manager.DdManager.DdManager;
-import net.canang.cfi.biz.gl.manager.GlManager.GlManager;
+import net.canang.cfi.biz.dd.manager.DdManager;
+import net.canang.cfi.biz.gl.manager.GlManager;
 import net.canang.cfi.biz.jm.manager.JmFinder;
 import net.canang.cfi.biz.jm.manager.JmManager;
-import net.canang.cfi.biz.vm.manager.VmManager.VmManager;
+import net.canang.cfi.biz.vm.manager.VmManager;
 import org.activiti.engine.impl.bpmn.behavior.BpmnActivityBehavior;
 import org.activiti.engine.impl.pvm.delegate.ActivityBehavior;
 import org.springframework.beans.factory.annotation.Autowired;

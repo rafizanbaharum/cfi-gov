@@ -8,7 +8,7 @@ import net.canang.cfi.core.so.model.CfDocument;
 import java.math.BigDecimal;
 
 
-public interface CfPayable extends CfDocument {
+public interface CfPayable<I extends CfPayableItem> extends CfDocument {
 
     BigDecimal getTotalAmount();
 

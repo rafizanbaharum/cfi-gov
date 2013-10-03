@@ -1,6 +1,5 @@
 package net.canang.cfi.core.ap.model;
 
-import net.canang.cfi.core.dd.model.CfActorInfo;
 import net.canang.cfi.core.dd.model.CfPaymentInfo;
 
 /**
@@ -8,7 +7,7 @@ import net.canang.cfi.core.dd.model.CfPaymentInfo;
  *
  * @author canang.technologies
  */
-public interface CfInvoice extends CfSinglePayable {
+public interface CfInvoice extends CfSinglePayable<CfInvoiceItem> {
 
     CfInvoiceType getInvoiceType();
 

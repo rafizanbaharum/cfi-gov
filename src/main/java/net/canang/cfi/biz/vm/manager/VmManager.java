@@ -1,4 +1,4 @@
-package net.canang.cfi.biz.vm.manager.VmManager;
+package net.canang.cfi.biz.vm.manager;
 
 import net.canang.cfi.core.jm.model.CfJournal;
 

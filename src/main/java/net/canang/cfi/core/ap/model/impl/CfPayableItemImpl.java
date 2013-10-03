@@ -25,8 +25,8 @@ public class CfPayableItemImpl implements CfInvoiceItem, Serializable {
 
     @Id
     @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SEQ_CT08_INVOICE_ITEM")
-    @SequenceGenerator(name = "SEQ_CT08_INVOICE_ITEM", sequenceName = "SEQ_CT08_INVOICE_ITEM", allocationSize = 1)
+    @GeneratedValue(generator = "SEQ_CF_INVC_ITEM")
+    @SequenceGenerator(name = "SEQ_CF_INVC_ITEM", sequenceName = "SEQ_CF_INVC_ITEM", allocationSize = 1)
     private Long id;
 
     @Column(name = "INVOICE_NO")

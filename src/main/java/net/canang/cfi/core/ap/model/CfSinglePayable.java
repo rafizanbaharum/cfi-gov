@@ -1,6 +1,8 @@
 package net.canang.cfi.core.ap.model;
 
 import net.canang.cfi.core.dd.model.CfActorInfo;
+import net.canang.cfi.core.dd.model.CfAddressInfo;
+import net.canang.cfi.core.dd.model.CfPaymentInfo;
 import net.canang.cfi.core.so.model.CfActor;
 
 import java.util.List;
@@ -18,6 +20,14 @@ public interface CfSinglePayable<I extends CfSinglePayableItem> extends CfPayabl
     CfActorInfo getActorInfo();
 
     void setActorInfo(CfActorInfo recipient);
+
+    CfAddressInfo getAddressInfo();
+
+    void setAddressInfo(CfAddressInfo addressInfo);
+
+    CfPaymentInfo getPaymentInfo();
+
+    void setPaymentInfo(CfPaymentInfo paymentInfo);
 
     List<I> getItems();
 

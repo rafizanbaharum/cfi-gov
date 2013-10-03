@@ -1,4 +1,4 @@
-package net.canang.cfi.biz.dd.manager.DdManager;
+package net.canang.cfi.biz.dd.manager;
 
 /**
  * @author rafizan.baharum

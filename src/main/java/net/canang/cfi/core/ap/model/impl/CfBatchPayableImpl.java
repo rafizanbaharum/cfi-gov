@@ -30,14 +30,18 @@ public abstract class CfBatchPayableImpl extends CfPayableImpl implements CfBatc
             if (payable instanceof CfSinglePayable) {
                 CfSinglePayable p = (CfSinglePayable) payable;
                 p.getActor();
-                p.getActorInfo(); // embedded audit
+                p.getActorInfo();
+                p.getPaymentInfo();
+                p.getAddressInfo();
                 p.getItems();
             } else if (payable instanceof CfBatchPayable) {
                 CfBatchPayable p = (CfBatchPayable) payable;
                 List<CfBatchPayableRecipient> recipients = p.getRecipients();
                 for (CfBatchPayableRecipient recipient : recipients) {
-                    recipient.getActor(); // embedded audit
-                    recipient.getActorInfo(); // embedded audit
+                    recipient.getActor();
+                    recipient.getActorInfo();
+                    recipient.getAddressInfo();
+                    recipient.getPaymentInfo();
                 }
             }
         }

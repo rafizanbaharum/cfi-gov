@@ -1,4 +1,4 @@
-package net.canang.cfi.biz.gl.manager.GlManager;
+package net.canang.cfi.biz.gl.manager;
 
 import net.canang.cfi.core.jm.model.CfJournal;
 
