@@ -62,15 +62,16 @@ public interface CfLedgerDao {
     // CRUD
     // ====================================================================================================
 
-    CfLedger save(CfLedger ledger, CfUser user);
+    void save(CfLedger ledger, CfUser user);
 
-    CfLedger update(CfLedger ledger, CfUser user);
+    void update(CfLedger ledger, CfUser user);
 
-    CfLedger deactivate(CfLedger ledger, CfUser user);
+    void deactivate(CfLedger ledger, CfUser user);
 
     void remove(CfLedger ledger, CfUser user);
 
     void addTransaction(CfLedger ledger, CfLedgerTransaction ltx, CfUser user);
 
     void addTransactions(CfLedger ledger, List<CfLedgerTransaction> ltxs, CfUser user);
+
 }
