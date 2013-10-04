@@ -36,6 +36,7 @@ public class CfBizConfig {
                 .scanPackages("net.canang.cfi.core.ar")
                 .scanPackages("net.canang.cfi.core.bm")
                 .scanPackages("net.canang.cfi.core.dd")
+                .scanPackages("net.canang.cfi.core.so")
                 .scanPackages("net.canang.cfi.core.gl")
                 .scanPackages("net.canang.cfi.core.jm")
                 .scanPackages("net.canang.cfi.core.vm")

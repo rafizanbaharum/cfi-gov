@@ -8,6 +8,7 @@ import org.activiti.spring.ProcessEngineFactoryBean;
 import org.activiti.spring.SpringProcessEngineConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 10/2/13
  */
-//@Configuration
+@Configuration
 public class CfBizWorkflowConfig {
 
     @Autowired
