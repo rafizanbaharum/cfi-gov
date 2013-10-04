@@ -6,6 +6,7 @@ import net.canang.cfi.core.so.model.CfMetadata;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * todo: comment
@@ -14,7 +15,7 @@ import java.io.Serializable;
  */
 @Table(name = "CF_CRCY_CODE")
 @Entity(name = "CfCurrencyCode")
-public class CfCurrencyCodeImpl implements CfCurrencyCode, Serializable{
+public class CfCurrencyCodeImpl implements CfCurrencyCode, Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -33,6 +34,12 @@ public class CfCurrencyCodeImpl implements CfCurrencyCode, Serializable{
 
     @Column(name = "DESCRIPTION")
     private String description;
+
+    @Column(name = "BUY")
+    private BigDecimal buy;
+
+    @Column(name = "SELL")
+    private BigDecimal sell;
 
     @Embedded
     private CfMetadata metadata;
@@ -67,6 +74,22 @@ public class CfCurrencyCodeImpl implements CfCurrencyCode, Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public BigDecimal getBuy() {
+        return buy;
+    }
+
+    public void setBuy(BigDecimal buy) {
+        this.buy = buy;
+    }
+
+    public BigDecimal getSell() {
+        return sell;
+    }
+
+    public void setSell(BigDecimal sell) {
+        this.sell = sell;
     }
 
     public CfMetadata getMetadata() {

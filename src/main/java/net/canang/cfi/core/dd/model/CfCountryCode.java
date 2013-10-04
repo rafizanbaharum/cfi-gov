@@ -16,5 +16,7 @@ public interface CfCountryCode extends CfMetaObject {
 
     String getDescription();
 
+    CfCurrencyCode getCurrencyCode();
+
     String getSummary();
 }

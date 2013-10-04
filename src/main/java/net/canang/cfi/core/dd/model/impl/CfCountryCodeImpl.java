@@ -1,7 +1,7 @@
 package net.canang.cfi.core.dd.model.impl;
 
 import net.canang.cfi.core.dd.model.CfCountryCode;
-import net.canang.cfi.core.dd.model.CfStateCode;
+import net.canang.cfi.core.dd.model.CfCurrencyCode;
 import net.canang.cfi.core.so.model.CfMetadata;
 
 import javax.persistence.*;
@@ -37,9 +37,9 @@ public class CfCountryCodeImpl implements CfCountryCode, Serializable {
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @OneToOne(targetEntity = CfStateCodeImpl.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "STATE_CODE_ID")
-    private CfStateCode stateCode;
+    @OneToOne(targetEntity = CfCurrencyCodeImpl.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "CURRENCY_CODE_ID")
+    private CfCurrencyCode currencyCode;
 
     @Embedded
     private CfMetadata metadata;
@@ -59,6 +59,7 @@ public class CfCountryCodeImpl implements CfCountryCode, Serializable {
     public void setCode(String code) {
         this.code = code;
     }
+
     public String getAlias() {
         return alias;
     }
@@ -76,12 +77,12 @@ public class CfCountryCodeImpl implements CfCountryCode, Serializable {
         this.description = description;
     }
 
-    public CfStateCode getStateCode() {
-        return stateCode;
+    public CfCurrencyCode getCurrencyCode() {
+        return currencyCode;
     }
 
-    public void setStateCode(CfStateCode stateCode) {
-        this.stateCode = stateCode;
+    public void setCurrencyCode(CfCurrencyCode currencyCode) {
+        this.currencyCode = currencyCode;
     }
 
     public CfMetadata getMetadata() {
