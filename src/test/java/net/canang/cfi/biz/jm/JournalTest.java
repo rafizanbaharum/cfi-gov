@@ -68,7 +68,7 @@ public class JournalTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     @Test
     @Rollback(value = false)
-    public void createHierarchicalGroup() {
+    public void testJournal() {
         CfCostCenter costCenter = costCenterDao.findByCode("U.J030000.0000.0000");
         CfManualJournal manualJournal = new CfManualJournalImpl();
         manualJournal.setDescription("MANUAL JOURNAL");

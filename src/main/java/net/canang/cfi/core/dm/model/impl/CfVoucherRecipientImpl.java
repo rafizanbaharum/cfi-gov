@@ -30,7 +30,7 @@ public class CfVoucherRecipientImpl implements CfVoucherRecipient, Serializable 
     @Id
     @Column(name = "ID", nullable = false)
     @GeneratedValue(generator = "SEQ_CF_VCHR_RCPN")
-    @SequenceGenerator(name = "SEQ_CT10_VOUCHER_RECIPIENT", sequenceName = "SEQ_CT10_VOUCHER_RECIPIENT", allocationSize = 1)
+    @SequenceGenerator(name = "SEQ_CF_VCHR_RCPN", sequenceName = "SEQ_CF_VCHR_RCPN", allocationSize = 1)
     private Long id;
 
     @NotNull

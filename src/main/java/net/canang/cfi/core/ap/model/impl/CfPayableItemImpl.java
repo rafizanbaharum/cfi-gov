@@ -18,7 +18,7 @@ import java.util.Date;
  * @author canang.technologies
  */
 @Table(name = "CF_PYBL_ITEM")
-@Entity(name = "CfPayable")
+@Entity(name = "CfPayableItem")
 public class CfPayableItemImpl implements CfInvoiceItem, Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -26,8 +26,8 @@ public class CfPayableTransactionImpl implements CfPayableTransaction, Serializa
 
     @Id
     @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SEQ_CT_PAYABLE_TRANSACTION")
-    @SequenceGenerator(name = "SEQ_CT_PAYABLE_TRANSACTION", sequenceName = "SEQ_CT_PAYABLE_TRANSACTION", allocationSize = 1)
+    @GeneratedValue(generator = "SEQ_CF_PYBL_TRSN")
+    @SequenceGenerator(name = "SEQ_CF_PYBL_TRSN", sequenceName = "SEQ_CF_PYBL_TRSN", allocationSize = 1)
     private Long id;
 
     @NotNull
