@@ -1,5 +1,7 @@
 package net.canang.cfi.biz.jm.manager.workflow;
 
+import net.canang.cfi.biz.Util;
+import net.canang.cfi.core.jm.dao.CfJournalDao;
 import net.canang.cfi.core.jm.model.CfJournal;
 import net.canang.cfi.core.so.model.impl.CfDocumentImpl;
 import org.activiti.engine.*;
@@ -12,6 +14,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -23,10 +26,13 @@ import java.util.Map;
  * @author rafizan.baharum
  * @since 10/3/13
  */
+@Transactional
 @Service("journalWorkfLow")
 public class JournalWorkflowImpl implements JournalWorkflow {
 
     private static final String DOCUMENT_ID = "documentId";
+    public static final String DOCUMENT_CLASS = "documentClass";
+    public static final String DOCUMENT_REFERENCE_NO = "referenceNo";
     private static final String PROCESS_DEF = "jm_manual_journal_workflow";
     private static final String PROCESS_BPMN = "net/canang/cfi/biz/jm/workflow/manual_journal_workflow.bpmn20.xml";
 
@@ -37,7 +43,10 @@ public class JournalWorkflowImpl implements JournalWorkflow {
     @Autowired
     protected SessionFactory sessionFactory;
 
-    @Autowired(required = false)
+    @Autowired
+    protected CfJournalDao journalDao;
+
+    @Autowired
     protected ProcessEngine processEngine;
 
     @Autowired
@@ -63,6 +72,10 @@ public class JournalWorkflowImpl implements JournalWorkflow {
 
     @Override
     public void process(CfJournal journal) {
+        journalDao.save(journal, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+        sessionFactory.getCurrentSession().refresh(journal);
+
         ProcessInstance instance = runtimeService.startProcessInstanceByKey(PROCESS_DEF, toVariables(journal));
     }
 
@@ -84,11 +97,12 @@ public class JournalWorkflowImpl implements JournalWorkflow {
         return tasks;
     }
 
-    private Map<String, Object> toVariables(CfJournal registration) {
+    private Map<String, Object> toVariables(CfJournal journal) {
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("creator", "currentUser");
-        map.put("referenceNo", registration.getReferenceNo());
-        map.put(DOCUMENT_ID, registration.getId());
+        map.put("userCreator", Util.getCurrentUser().getUsername());
+        map.put(DOCUMENT_REFERENCE_NO, journal.getReferenceNo());
+        map.put(DOCUMENT_CLASS, journal.getClass().getCanonicalName());
+        map.put(DOCUMENT_ID, journal.getId());
         return map;
     }
 

@@ -21,8 +21,8 @@ public class CfSodoCodeImpl implements CfSodoCode, Serializable {
 
     @Id
     @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SEQ_CT03_SODO_CODE")
-    @SequenceGenerator(name = "SEQ_CT03_SODO_CODE", sequenceName = "SEQ_CT03_SODO_CODE", allocationSize = 1)
+    @GeneratedValue(generator = "SEQ_CF_SODO_CODE")
+    @SequenceGenerator(name = "SEQ_CF_SODO_CODE", sequenceName = "SEQ_CF_SODO_CODE", allocationSize = 1)
     private Long id;
 
     @NotNull
@@ -44,7 +44,7 @@ public class CfSodoCodeImpl implements CfSodoCode, Serializable {
 
     @NotNull
     @ManyToOne(targetEntity = CfAccountCodeImpl.class)
-    @JoinColumn(name = "ACCOUNT_ID")
+    @JoinColumn(name = "ACCOUNT_CODE_ID")
     private CfAccountCode accountCode;
 
     @Embedded

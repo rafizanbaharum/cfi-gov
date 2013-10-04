@@ -124,6 +124,7 @@ objects and entities. Please refer to the extensibility section of our documenta
 * INVC=INVOICE
 * LDGR=LEDGER
 * LSSN=LESSON
+* MANL=MANUAL
 * MMBR=MEMBER
 * MODL=MODULE
 * PCPL=PRINCIPAL

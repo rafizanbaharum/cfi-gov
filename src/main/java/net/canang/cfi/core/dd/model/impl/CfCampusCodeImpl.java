@@ -21,7 +21,7 @@ public class CfCampusCodeImpl implements CfCampusCode, Serializable {
     @Id
     @Column(name = "ID", nullable = false)
     @GeneratedValue(generator = "SEQ_CF_CMPS_CODE")
-    @SequenceGenerator(name = "SEQ_CF_CMPS_CODE", sequenceName = "SEQ_CT_CMPS_CODE", allocationSize = 1)
+    @SequenceGenerator(name = "SEQ_CF_CMPS_CODE", sequenceName = "SEQ_CF_CMPS_CODE", allocationSize = 1)
     private Long id;
 
     @NotNull

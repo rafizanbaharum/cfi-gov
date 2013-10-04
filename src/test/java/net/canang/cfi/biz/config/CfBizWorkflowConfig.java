@@ -9,7 +9,6 @@ import org.activiti.spring.SpringProcessEngineConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,6 @@ import java.util.List;
  * @since 10/2/13
  */
 @Configuration
-@EnableTransactionManagement
 public class CfBizWorkflowConfig {
 
     @Autowired
