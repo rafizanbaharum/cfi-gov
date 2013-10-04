@@ -69,7 +69,7 @@ public class JournalTest extends AbstractTransactionalJUnit4SpringContextTests {
     @Test
     @Rollback(value = false)
     public void testJournal() {
-        CfCostCenter costCenter = costCenterDao.findByCode("U.J030000.0000.0000");
+        CfCostCenter costCenter = costCenterDao.findByCode("U.K070000.0000.0000");
         CfManualJournal manualJournal = new CfManualJournalImpl();
         manualJournal.setDescription("MANUAL JOURNAL");
         manualJournal.setRequester(costCenter);
