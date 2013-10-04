@@ -21,7 +21,7 @@ import java.util.Properties;
  * @since 10/2/13
  */
 @Configuration
-@ComponentScan({"net.canang.cfi.core", "net.canang.cfi.biz"})
+@ComponentScan({"net.canang.cfi.core"})
 @PropertySource("classpath:app.properties")
 @EnableTransactionManagement
 public class CfCoreConfig {
