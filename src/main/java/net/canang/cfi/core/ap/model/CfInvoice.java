@@ -7,7 +7,7 @@ import net.canang.cfi.core.dd.model.CfPaymentInfo;
  *
  * @author canang.technologies
  */
-public interface CfInvoice extends CfSinglePayable<CfInvoiceItem> {
+public interface CfInvoice extends CfSinglePayable {
 
     CfInvoiceType getInvoiceType();
 

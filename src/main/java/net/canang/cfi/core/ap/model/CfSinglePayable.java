@@ -11,7 +11,7 @@ import java.util.List;
  * @author canang.technologies
  * @since 10/2/13
  */
-public interface CfSinglePayable<I extends CfSinglePayableItem> extends CfPayable {
+public interface CfSinglePayable<I extends CfPayableItem> extends CfPayable {
 
     CfActor getActor();
 
