@@ -80,6 +80,7 @@ public class CfBankCodeImpl implements CfBankCode, Serializable {
         this.metadata = metadata;
     }
 
+    @Transient
     @Override
     public String getSummary() {
         return getCode() + Character.DASH_PUNCTUATION + getDescription();
