@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +21,7 @@ import java.util.Map;
  * @author rafizan.baharum
  * @since 10/3/13
  */
+@Service("journalWorklfow")
 public class JournalWorkflowImpl implements JournalWorkflow {
 
     private static final String DOCUMENT_ID = "documentId";
@@ -33,22 +35,22 @@ public class JournalWorkflowImpl implements JournalWorkflow {
     @Autowired
     protected SessionFactory sessionFactory;
 
-    @Autowired
+    @Autowired(required = false)
     protected ProcessEngine processEngine;
 
-    @Autowired
+    @Autowired(required = false) // todo
     protected RuntimeService runtimeService;
 
-    @Autowired
+    @Autowired(required = false) // todo
     protected TaskService taskService;
 
-    @Autowired
+    @Autowired(required = false) // todo
     protected IdentityService identityService;
 
-    @Autowired
+    @Autowired(required = false) // todo
     protected HistoryService historyService;
 
-    @Autowired
+    @Autowired(required = false) // todo
     protected RepositoryService repositoryService;
 
 

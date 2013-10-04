@@ -6,6 +6,7 @@ import net.canang.cfi.core.dd.model.impl.CfConfigurationImpl;
 import net.canang.cfi.core.so.dao.DaoSupport;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import static net.canang.cfi.core.so.model.CfMetaState.ACTIVE;
 /**
  * @author : alif haikal razak
  */
+@Repository("configurationDao")
 public class CfConfigurationDaoImpl extends DaoSupport<Long, CfConfiguration, CfConfigurationImpl> implements CfConfigurationDao {
     // =============================================================================
     // HELPER METHODS

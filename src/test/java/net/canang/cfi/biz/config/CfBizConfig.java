@@ -32,7 +32,7 @@ public class CfBizConfig {
     @Bean
     public SessionFactory sessionFactory() {
         return new LocalSessionFactoryBuilder(dataSource())
-                .scanPackages("net.canang.cfi.core.model")
+                .scanPackages("net.canang.cfi.core")
                 .addProperties(hibernateProperties())
                 .buildSessionFactory();
     }

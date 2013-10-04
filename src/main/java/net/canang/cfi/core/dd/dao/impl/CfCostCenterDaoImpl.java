@@ -8,6 +8,7 @@ import net.canang.cfi.core.so.model.CfPrincipal;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Set;
@@ -17,6 +18,7 @@ import static net.canang.cfi.core.so.model.CfMetaState.ACTIVE;
 /**
  * @author : alif haikal razak
  */
+@Repository("costCenterDao")
 public class CfCostCenterDaoImpl extends DaoSupport<Long, CfCostCenter, CfCostCenterImpl> implements CfCostCenterDao {
 
 

@@ -8,6 +8,7 @@ import net.canang.cfi.core.so.dao.DaoSupport;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import static net.canang.cfi.core.so.model.CfMetaState.ACTIVE;
 /**
  * @author : alif haikal razak
  */
+@Repository("cityCodeDao")
 public class CfCityCodeDaoImpl extends DaoSupport<Long, CfCityCode, CfCityCodeImpl> implements CfCityCodeDao {
 
     private static final Logger log = Logger.getLogger(CfCityCodeDaoImpl.class);

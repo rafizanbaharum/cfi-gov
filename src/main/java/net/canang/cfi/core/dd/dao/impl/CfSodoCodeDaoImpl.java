@@ -7,6 +7,7 @@ import net.canang.cfi.core.dd.model.impl.CfSodoCodeImpl;
 import net.canang.cfi.core.so.dao.DaoSupport;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import static net.canang.cfi.core.so.model.CfMetaState.ACTIVE;
 /**
  * @author : alif haikal razak
  */
+@Repository("sodoCodeDao")
 public class CfSodoCodeDaoImpl extends DaoSupport<Long, CfSodoCode, CfSodoCodeImpl> implements CfSodoCodeDao {
 
     // =============================================================================

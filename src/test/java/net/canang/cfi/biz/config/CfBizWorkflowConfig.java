@@ -4,24 +4,19 @@ import net.canang.cfi.biz.integration.activiti.CfActivitiGroupManagerFactory;
 import net.canang.cfi.biz.integration.activiti.CfActivitiUserManagerFactory;
 import org.activiti.engine.*;
 import org.activiti.engine.impl.interceptor.SessionFactory;
-import org.activiti.engine.impl.persistence.entity.GroupEntityManager;
-import org.activiti.engine.impl.persistence.entity.UserEntityManager;
 import org.activiti.spring.ProcessEngineFactoryBean;
 import org.activiti.spring.SpringProcessEngineConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author rafizan.baharum
  * @since 10/2/13
  */
-@Configuration
+//@Configuration
 public class CfBizWorkflowConfig {
 
     @Autowired
@@ -39,7 +34,7 @@ public class CfBizWorkflowConfig {
         springConfiguration.setDatabaseType("postgresql");
         springConfiguration.setDataSource(mainConfig.dataSource());
         springConfiguration.setTransactionManager(mainConfig.transactionManager());
-        springConfiguration.setDatabaseSchemaUpdate("false");
+        springConfiguration.setDatabaseSchemaUpdate("true");
         springConfiguration.setJobExecutorActivate(false);
         springConfiguration.setHistory("full");
         List<SessionFactory> sf = new ArrayList<SessionFactory>();
@@ -50,9 +45,9 @@ public class CfBizWorkflowConfig {
     }
 
     @Bean
-    public ProcessEngineFactoryBean processEngineFactoryBean(SpringProcessEngineConfiguration spec) {
+    public ProcessEngineFactoryBean processEngineFactoryBean() {
         ProcessEngineFactoryBean engine = new ProcessEngineFactoryBean();
-        engine.setProcessEngineConfiguration(spec);
+        engine.setProcessEngineConfiguration(springProcessEngineConfiguration());
         return engine;
 
     }

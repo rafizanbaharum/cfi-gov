@@ -7,12 +7,14 @@ import net.canang.cfi.core.so.dao.DaoSupport;
 import net.canang.cfi.core.so.model.CfMetaState;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * @author : alif haikal razak
  */
+@Repository("accountCodeDao")
 public class CfAccountCodeDaoImpl extends DaoSupport<Long, CfAccountCode, CfAccountCodeImpl> implements CfAccountCodeDao {
 
     // =============================================================================

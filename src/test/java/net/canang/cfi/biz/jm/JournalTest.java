@@ -1,8 +1,6 @@
 package net.canang.cfi.biz.jm;
 
 import net.canang.cfi.biz.config.CfBizConfig;
-import net.canang.cfi.biz.config.CfBizSecurityConfig;
-import net.canang.cfi.biz.config.CfBizWorkflowConfig;
 import net.canang.cfi.biz.dd.manager.DdFinder;
 import net.canang.cfi.biz.jm.manager.workflow.JournalWorkflow;
 import net.canang.cfi.core.dd.dao.CfCostCenterDao;
@@ -37,7 +35,7 @@ import java.util.List;
  * @since 10/4/13
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {CfBizConfig.class, CfBizSecurityConfig.class, CfBizWorkflowConfig.class})
+@ContextConfiguration(classes = {CfBizConfig.class})
 public class JournalTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     private Logger log = LoggerFactory.getLogger(JournalTest.class);
@@ -57,7 +55,7 @@ public class JournalTest extends AbstractTransactionalJUnit4SpringContextTests {
     @Autowired
     private JournalWorkflow workflow;
 
-    @Autowired
+    @Autowired(required = false)
     @Qualifier("org.springframework.security.authenticationManager")
     private AuthenticationManager authenticationManager;
 

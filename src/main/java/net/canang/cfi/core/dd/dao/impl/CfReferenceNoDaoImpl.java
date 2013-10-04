@@ -7,6 +7,7 @@ import net.canang.cfi.core.so.dao.DaoSupport;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import static net.canang.cfi.core.so.model.CfMetaState.ACTIVE;
 /**
  * @author : alif haikal razak
  */
+@Repository("referenceNoDao")
 public class CfReferenceNoDaoImpl extends DaoSupport<Long, CfReferenceNo, CfReferenceNoImpl> implements CfReferenceNoDao {
 
     private static final Logger log = Logger.getLogger(CfReferenceNoDaoImpl.class);
