@@ -1,13 +1,18 @@
 package net.canang.cfi.biz.jm.manager;
 
+import net.canang.cfi.biz.Util;
 import net.canang.cfi.biz.jm.manager.history.JournalRecord;
 import net.canang.cfi.biz.jm.manager.workflow.JournalTask;
 import net.canang.cfi.core.dd.model.CfCostCenter;
+import net.canang.cfi.core.jm.dao.CfJournalDao;
 import net.canang.cfi.core.jm.model.CfJournal;
 import net.canang.cfi.core.jm.model.CfJournalTransaction;
 import net.canang.cfi.core.jm.model.CfJournalType;
 import net.canang.cfi.core.so.model.CfFlowState;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -16,8 +21,16 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 10/4/13
  */
+@Transactional
 @Service("jmManager")
 public class JmManagerImpl implements JmManager {
+
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    @Autowired
+    private CfJournalDao journalDao;
+
     @Override
     public List<JournalTask> findAssignedTasks(CfJournalType type, Integer offset, Integer limit) {
         return null;  // TODO:
@@ -103,56 +116,55 @@ public class JmManagerImpl implements JmManager {
     }
 
     @Override
-    public CfJournal saveJournal(CfJournal journal) {
-        return null;  // TODO:
-
+    public void saveJournal(CfJournal journal) {
+        journalDao.save(journal, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
-    public CfJournal updateJournal(CfJournal journal) {
-        return null;  // TODO:
-
+    public void updateJournal(CfJournal journal) {
+        journalDao.update(journal, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
-    public void addJournalTransaction(CfJournal journal, CfJournalTransaction transactions) {
-        // TODO:
-
+    public void addJournalTransaction(CfJournal journal, CfJournalTransaction transaction) {
+        journalDao.addTransaction(journal, transaction, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void addJournalTransactions(CfJournal journal, List<CfJournalTransaction> transactions) {
-        // TODO:
-
+        journalDao.addTransactions(journal, transactions, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateJournalTransaction(CfJournal journal, CfJournalTransaction transaction) {
-        // TODO:
-
+        journalDao.updateTransaction(journal, transaction, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateJournalTransactions(CfJournal journal, List<CfJournalTransaction> transactions) {
-        // TODO:
-
+        journalDao.updateTransactions(journal, transactions, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeJournalTransaction(CfJournal journal, CfJournalTransaction transaction) {
-        // TODO:
-
+        journalDao.removeTransaction(journal, transaction, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeJournalTransactions(CfJournal journal, List<CfJournalTransaction> transactions) {
-        // TODO:
-
+        journalDao.removeTransactions(journal, transactions, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public String generateReferenceNo(String code, CfCostCenter costCenter) {
         return null;  // TODO:
-
     }
 }

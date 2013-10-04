@@ -3,11 +3,14 @@ package net.canang.cfi.biz.jm;
 import net.canang.cfi.biz.config.CfBizConfig;
 import net.canang.cfi.biz.config.CfBizSecurityConfig;
 import net.canang.cfi.biz.dd.manager.DdFinder;
+import net.canang.cfi.biz.jm.manager.JmManager;
+import net.canang.cfi.biz.jm.manager.workflow.JournalTask;
 import net.canang.cfi.biz.jm.manager.workflow.JournalWorkflow;
 import net.canang.cfi.core.dd.dao.CfCostCenterDao;
 import net.canang.cfi.core.dd.dao.CfSodoCodeDao;
 import net.canang.cfi.core.dd.model.CfCostCenter;
 import net.canang.cfi.core.jm.model.CfJournalTransaction;
+import net.canang.cfi.core.jm.model.CfJournalType;
 import net.canang.cfi.core.jm.model.CfManualJournal;
 import net.canang.cfi.core.jm.model.impl.CfJournalTransactionImpl;
 import net.canang.cfi.core.jm.model.impl.CfManualJournalImpl;
@@ -56,6 +59,9 @@ public class JournalTest extends AbstractTransactionalJUnit4SpringContextTests {
     @Autowired
     private JournalWorkflow workflow;
 
+    @Autowired
+    private JmManager jmManager;
+
     @Autowired(required = true)
     private AuthenticationManager authenticationManager;
 
@@ -71,14 +77,13 @@ public class JournalTest extends AbstractTransactionalJUnit4SpringContextTests {
     @Rollback(value = false)
     public void testJournal() {
         CfCostCenter costCenter = costCenterDao.findByCode("U.K070000.0100.0000");
-        CfManualJournal manualJournal = new CfManualJournalImpl();
-        manualJournal.setDescription("MANUAL JOURNAL");
-        manualJournal.setRequester(costCenter);
-        manualJournal.setTotalAmount(new BigDecimal(0.00));
+        CfManualJournal journal = new CfManualJournalImpl();
+        journal.setDescription("MANUAL JOURNAL");
+        journal.setRequester(costCenter);
+        journal.setTotalAmount(new BigDecimal(0.00));
 
         // drafted
-        workflow.process(manualJournal);
-
+        workflow.process(journal);
 
         List<CfJournalTransaction> txs = new ArrayList<CfJournalTransaction>();
         CfJournalTransaction tx1 = new CfJournalTransactionImpl();
@@ -93,5 +98,12 @@ public class JournalTest extends AbstractTransactionalJUnit4SpringContextTests {
         tx2.setSodoCode(sodoCodeDao.findByCode("B22000"));
         tx2.setAmount(new BigDecimal(10.00).negate());
         txs.add(tx2);
+        jmManager.addJournalTransactions(journal, txs);
+
+        List<JournalTask> tasks = workflow.findTasks(CfJournalType.MANUAL, 0, 100);
+        log.debug("found {} tasks", tasks.size());
+        for (JournalTask task : tasks) {
+            workflow.completeTask(task);
+        }
     }
 }

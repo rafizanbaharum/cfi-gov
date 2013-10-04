@@ -8,7 +8,6 @@ import net.canang.cfi.core.so.model.CfMetaObject;
 import net.canang.cfi.core.so.model.CfPrincipal;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.acls.domain.ObjectIdentityImpl;
@@ -34,8 +33,7 @@ public class AccessListener implements ApplicationListener<AccessEvent> {
 
     private static final String ROOT = "root";
 
-    @Autowired(required = false) // TODO:
-    @Qualifier("org.springframework.security.authenticationManager")
+    @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired

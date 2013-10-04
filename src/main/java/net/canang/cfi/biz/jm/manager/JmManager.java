@@ -57,9 +57,9 @@ public interface JmManager {
     // HELPER METHODS
     // ==================================================================================================== //
 
-    CfJournal saveJournal(CfJournal journal);
+    void saveJournal(CfJournal journal);
 
-    CfJournal updateJournal(CfJournal journal);
+    void updateJournal(CfJournal journal);
 
     void addJournalTransaction(CfJournal journal, CfJournalTransaction transactions);
 

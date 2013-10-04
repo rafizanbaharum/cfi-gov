@@ -19,7 +19,6 @@ public class TaskAdapter extends TaskEntity implements Task {
         this.task = task;
     }
 
-
     @Override
     public String getId() {
         return task.getId();

@@ -7,7 +7,7 @@
     <!--
     ====================================================================================================
     == VARIABLE:
-    == journalId: journal id
+    == documentId: journal id
     ====================================================================================================
     -->
 
@@ -30,7 +30,7 @@
 
         <sequenceFlow id="flow2.1" sourceRef="manualJournal_draft_ST" targetRef="manualJournal_draft_UT"/>
 
-        <userTask id="manualJournal_draft_UT" name="net.canang.cfi.core.jm.model.FsJournal:MANUAL:DRAFTED"
+        <userTask id="manualJournal_draft_UT" name="net.canang.cfi.core.jm.model.CfJournal:MANUAL:DRAFTED"
                   activiti:assignee="${userCreator}">
             <documentation>
                 Draft Journal Manual
@@ -57,8 +57,8 @@
 
         <sequenceFlow id="flow3.1" sourceRef="manualJournal_register_ST" targetRef="manualJournal_register_UT"/>
 
-        <userTask id="manualJournal_register_UT" name="net.canang.cfi.core.jm.model.FsJournal:MANUAL:REGISTERED"
-                  activiti:candidateGroups="${journalRouter.findRegistererCandidates(journalId)}">
+        <userTask id="manualJournal_register_UT" name="net.canang.cfi.core.jm.model.CfJournal:MANUAL:REGISTERED"
+                  activiti:candidateGroups="${journalRouter.findRegistererCandidates(documentId)}">
             <documentation>
                 Register Journal
             </documentation>

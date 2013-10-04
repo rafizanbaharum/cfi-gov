@@ -1,7 +1,7 @@
 package net.canang.cfi.core.dd.model.impl;
 
-import net.canang.cfi.core.dd.model.CfCityCode;
 import net.canang.cfi.core.dd.model.CfStateCode;
+import net.canang.cfi.core.dd.model.CfUnitCode;
 import net.canang.cfi.core.so.model.CfMetadata;
 
 import javax.persistence.*;
@@ -13,16 +13,16 @@ import java.io.Serializable;
  *
  * @author canang.technologies
  */
-@Table(name = "CF_CITY_CODE")
-@Entity(name = "CfCityCode")
-public class CfCityCodeImpl implements CfCityCode, Serializable {
+@Table(name = "CF_UNIT_CODE")
+@Entity(name = "CfUnitCode")
+public class CfUnitCodeImpl implements CfUnitCode, Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SEQ_CF_CITY_CODE")
-    @SequenceGenerator(name = "SEQ_CF_CITY_CODE", sequenceName = "SEQ_CF_CITY_CODE", allocationSize = 1)
+    @GeneratedValue(generator = "SEQ_CF_UNIT_CODE")
+    @SequenceGenerator(name = "SEQ_CF_UNIT_CODE", sequenceName = "SEQ_CF_UNIT_CODE", allocationSize = 1)
     private Long id;
 
     @NotNull
@@ -36,10 +36,6 @@ public class CfCityCodeImpl implements CfCityCode, Serializable {
     @NotNull
     @Column(name = "DESCRIPTION")
     private String description;
-
-    @OneToOne(targetEntity = CfStateCodeImpl.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "STATE_CODE_ID")
-    private CfStateCode stateCode;
 
     @Embedded
     private CfMetadata metadata;
@@ -75,14 +71,6 @@ public class CfCityCodeImpl implements CfCityCode, Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public CfStateCode getStateCode() {
-        return stateCode;
-    }
-
-    public void setStateCode(CfStateCode stateCode) {
-        this.stateCode = stateCode;
     }
 
     public CfMetadata getMetadata() {
