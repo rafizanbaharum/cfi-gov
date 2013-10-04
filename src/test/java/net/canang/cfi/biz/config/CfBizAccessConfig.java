@@ -8,7 +8,6 @@ import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.acls.AclPermissionEvaluator;
 import org.springframework.security.acls.domain.EhCacheBasedAclCache;
 import org.springframework.security.acls.jdbc.JdbcMutableAclService;
-import org.springframework.security.acls.jdbc.LookupStrategy;
 import org.springframework.security.acls.model.AclCache;
 import org.springframework.security.acls.model.AclService;
 
@@ -24,8 +23,8 @@ import javax.sql.DataSource;
 public class CfBizAccessConfig {
 
     @Bean
-    public AclService mutableAclService(DataSource dataSource, LookupStrategy strategy, AclCache cache) {
-        return new JdbcMutableAclService(dataSource, strategy, cache);
+    public AclService mutableAclService(DataSource dataSource, AclCache cache) {
+        return new JdbcMutableAclService(dataSource, null, cache);
     }
 
     @Bean
