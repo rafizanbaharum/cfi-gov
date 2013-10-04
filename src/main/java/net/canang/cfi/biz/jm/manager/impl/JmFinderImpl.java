@@ -8,6 +8,7 @@ import net.canang.cfi.core.jm.model.CfJournalTransaction;
 import net.canang.cfi.core.jm.model.CfJournalType;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 10/3/13
  */
+@Service("jmFinder")
 public class JmFinderImpl implements JmFinder {
 
     private static final Logger log = Logger.getLogger(JmFinderImpl.class);

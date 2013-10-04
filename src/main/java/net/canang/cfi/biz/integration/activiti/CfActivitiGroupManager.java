@@ -9,6 +9,7 @@ import org.activiti.engine.identity.GroupQuery;
 import org.activiti.engine.impl.persistence.entity.GroupEntityManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 10/2/13
  */
+@Component("activitiGroupManager")
 public class CfActivitiGroupManager extends GroupEntityManager {
 
     private static final Logger log = Logger.getLogger(CfActivitiGroupManager.class);

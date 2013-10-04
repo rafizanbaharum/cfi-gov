@@ -13,6 +13,7 @@ import net.canang.cfi.core.so.model.CfUser;
 import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 10/3/13
  */
+@Repository("receivableDao")
 public class CfReceivableDaoImpl extends DaoSupport<Long, CfReceivable, CfReceivableImpl> implements CfReceivableDao {
     @Override
     public CfReceivable findReceivableById(Long id) {

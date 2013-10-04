@@ -23,7 +23,7 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 10/2/13
  */
-@Component("activityUserEntityManager")
+@Component("activityUserManager")
 public class CfActivitiUserManager extends UserEntityManager {
 
     private static final Logger log = Logger.getLogger(CfActivitiUserManager.class);

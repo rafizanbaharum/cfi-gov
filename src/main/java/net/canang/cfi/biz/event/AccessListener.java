@@ -34,17 +34,17 @@ public class AccessListener implements ApplicationListener<AccessEvent> {
 
     private static final String ROOT = "root";
 
-    @Autowired
+    @Autowired(required = false) // TODO:
     @Qualifier("org.springframework.security.authenticationManager")
     private AuthenticationManager authenticationManager;
 
     @Autowired
     protected CfPrincipalDao principalDao;
 
-    @Autowired
+    @Autowired(required = false) // TODO:
     protected MutableAclService mutableAclService;
 
-    @Autowired
+    @Autowired(required = false) // TODO:
     protected PermissionEvaluator permissionEvaluator;
 
     @Override

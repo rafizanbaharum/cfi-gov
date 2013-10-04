@@ -9,11 +9,13 @@ import net.canang.cfi.core.so.model.CfDocument;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author rafizan.baharum
  * @since 10/3/13
  */
+@Service("glManager")
 public class GlManagerImpl implements GlManager {
 
     private static final Logger log = Logger.getLogger(GlManagerImpl.class);

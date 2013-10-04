@@ -15,6 +15,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.perf4j.aop.Profiled;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -27,6 +28,7 @@ import static net.canang.cfi.core.vm.model.CfVoteTransactionType.*;
 /**
  * @author : alif haikal razak
  */
+@Repository("voteDao")
 public class CfVoteDaoImpl extends DaoSupport<Long, CfVote, CfVoteImpl> implements CfVoteDao {
 
     private static final Logger log = Logger.getLogger(CfVoteDaoImpl.class);

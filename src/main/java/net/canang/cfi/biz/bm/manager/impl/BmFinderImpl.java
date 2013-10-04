@@ -10,6 +10,7 @@ import net.canang.cfi.core.so.model.CfMetaState;
 import net.canang.cfi.core.vm.dao.CfVoteDao;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 10/3/13
  */
+@Service("bmFinder")
 public class BmFinderImpl implements BmFinder {
 
     private static final Logger log = Logger.getLogger(BmFinderImpl.class);
