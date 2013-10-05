@@ -75,7 +75,7 @@ public class CfPostgresqlAclService implements AclService {
 	}
 
 	public Acl readAclById(ObjectIdentity object) throws NotFoundException {
-		return readAclById(object);
+		return (Acl) readAclsById(Arrays.asList(object)).get((String)"key");
 	}
 
 	public Map readAclsById(List<ObjectIdentity> objects) {

@@ -39,10 +39,10 @@ public class AccessListener implements ApplicationListener<AccessEvent> {
     @Autowired
     protected CfPrincipalDao principalDao;
 
-    @Autowired(required = false) // TODO:
+    @Autowired
     protected MutableAclService mutableAclService;
 
-    @Autowired(required = false) // TODO:
+    @Autowired
     protected PermissionEvaluator permissionEvaluator;
 
     @Override
