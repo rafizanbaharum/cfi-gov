@@ -1,6 +1,7 @@
 package net.canang.cfi.biz.integration.springsecurity;
 
 import net.canang.cfi.core.so.dao.CfPrincipalDao;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -18,6 +19,8 @@ import org.springframework.stereotype.Service;
 @Service("autoLoginAuthenticationProvider")
 public class CfAutoLoginAuthenticationProvider implements AuthenticationProvider {
 
+    private static final Logger log = Logger.getLogger(CfAutoLoginAuthenticationProvider.class);
+
     @Autowired
     private CfPrincipalDao principalDao;
 
@@ -29,10 +32,10 @@ public class CfAutoLoginAuthenticationProvider implements AuthenticationProvider
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = String.valueOf(authentication.getPrincipal());
-        UserDetails userDetail = userDetailService.loadUserByUsername(username);
+        UserDetails userDetail = userDetailService.loadUserByUsername(username);             // TODO
         if (null == userDetail)
             throw new BadCredentialsException("Bad credentials");
-        CfAutoLoginToken autoLoginToken = new CfAutoLoginToken(principalDao.findByName(userDetail.getUsername()));
+        CfAutoLoginToken autoLoginToken = new CfAutoLoginToken(principalDao.findByName(username));
         return autoLoginToken;
     }
 

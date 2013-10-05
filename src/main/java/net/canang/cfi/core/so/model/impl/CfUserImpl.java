@@ -24,7 +24,7 @@ public class CfUserImpl extends CfPrincipalImpl implements CfUser {
     private String email;
 
     @OneToOne(targetEntity = CfActorImpl.class)
-    @JoinColumn(name = "ACTOR_ID")
+    @JoinColumn(name = "ACTOR_ID", nullable = true)
     private CfActor actor;
 
     public CfUserImpl() {

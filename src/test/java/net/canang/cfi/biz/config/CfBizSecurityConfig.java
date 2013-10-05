@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.encoding.PlaintextPasswordEncoder;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -25,13 +26,15 @@ public class CfBizSecurityConfig extends GlobalMethodSecurityConfiguration {
     private CfUserDetailService userDetailService;
 
     @Autowired
-    private CfAutoLoginAuthenticationProvider authenticationProvider;
+    private CfAutoLoginAuthenticationProvider autoLoginAuthenticationProvider;
 
     @Bean
     protected AuthenticationManager authenticationManager() throws Exception {
         return new AuthenticationManagerBuilder(ObjectPostProcessor.QUIESCENT_POSTPROCESSOR)
-                .authenticationProvider(authenticationProvider)  // auto login
-                .userDetailsService(userDetailService).and().build();  // user detail
+                .authenticationProvider(autoLoginAuthenticationProvider)  // auto login
+                .userDetailsService(userDetailService)
+                .passwordEncoder(new PlaintextPasswordEncoder())
+                .and().build();  // user detail
     }
 }
 

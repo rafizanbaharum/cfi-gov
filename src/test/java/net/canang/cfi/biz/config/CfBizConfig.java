@@ -54,7 +54,7 @@ public class CfBizConfig {
     public Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        properties.put("hibernate.show_sql", "false");
+        properties.put("hibernate.show_sql", "true");
         properties.put("hibernate.hbm2ddl.auto", "update");
         properties.put("hibernate.format_sql", "true");
         properties.put("javax.persistence.validation.mode", "none");
