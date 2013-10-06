@@ -1,9 +1,9 @@
 -- ACL Schema SQL for PostgreSQL
 
--- drop table acl_entry;
--- drop table acl_object_identity;
--- drop table acl_class;
--- drop table acl_sid;
+drop table acl_entry;
+drop table acl_object_identity;
+drop table acl_class;
+drop table acl_sid;
 
 create table acl_sid(
     id bigserial not null primary key,

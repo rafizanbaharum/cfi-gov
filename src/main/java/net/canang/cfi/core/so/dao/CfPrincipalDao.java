@@ -1,6 +1,7 @@
 package net.canang.cfi.core.so.dao;
 
 import net.canang.cfi.core.exception.RecursiveGroupException;
+import net.canang.cfi.core.so.model.CfGroup;
 import net.canang.cfi.core.so.model.CfPrincipal;
 import net.canang.cfi.core.so.model.CfPrincipalType;
 import org.springframework.security.core.GrantedAuthority;
@@ -27,6 +28,8 @@ public interface CfPrincipalDao {
     List<CfPrincipal> findPrincipals(String filter, CfPrincipalType type);
 
     List<CfPrincipal> findPrincipals(Integer offset, Integer limit);
+
+    Set<CfGroup> loadEffectiveGroups(CfPrincipal principal) throws RecursiveGroupException;
 
     Set<GrantedAuthority> loadEffectiveAuthorities(CfPrincipal principal) throws RecursiveGroupException;
 

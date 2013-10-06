@@ -1,7 +1,7 @@
 package net.canang.cfi.biz.integration.springacl;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.security.acls.domain.ObjectIdentityImpl;
@@ -21,10 +21,11 @@ import java.util.Map;
  * @since 10/4/13
  */
 public class CfPostgresqlAclService implements AclService {
+
 	// ~ Static fields/initializers
 	// =====================================================================================
 
-	protected static final Log log = LogFactory.getLog(CfPostgresqlAclService.class);
+    private Logger log = LoggerFactory.getLogger(CfPostgresqlMutableAclService.class);
 	private static final String selectAclObjectWithParent = "SELECT obj.object_id_identity AS obj_id, "
 			+ "       class.class AS class " + "  FROM acl_object_identity obj, "
 			+ "       acl_object_identity parent, " + "       acl_class class "

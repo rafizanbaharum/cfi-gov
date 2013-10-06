@@ -60,7 +60,7 @@ public class AccessListener implements ApplicationListener<AccessEvent> {
         SecurityContext savedCtx = SecurityContextHolder.getContext();
         try {
 
-            // temporarily log in as system
+            // temporarily log in as root
             // NOTE: http://issues.hudson-ci.org/browse/HUDSON-7256
             CfAutoLoginToken authenticationToken = new CfAutoLoginToken(principalDao.findByName(ROOT));
             Authentication authed = authenticationManager.authenticate(authenticationToken);

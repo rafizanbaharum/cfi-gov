@@ -1,11 +1,14 @@
 package net.canang.cfi.biz.jm.manager.workflow;
 
 import net.canang.cfi.biz.Util;
+import net.canang.cfi.biz.event.AccessEvent;
 import net.canang.cfi.biz.integration.activiti.WorkflowSupport;
+import net.canang.cfi.biz.integration.springacl.CfAclPermission;
 import net.canang.cfi.core.jm.dao.CfJournalDao;
 import net.canang.cfi.core.jm.model.CfJournal;
 import net.canang.cfi.core.jm.model.CfJournalType;
 import net.canang.cfi.core.jm.model.CfManualJournal;
+import net.canang.cfi.core.so.dao.CfPrincipalDao;
 import net.canang.cfi.core.so.model.impl.CfDocumentImpl;
 import org.activiti.engine.*;
 import org.activiti.engine.runtime.ProcessInstance;
@@ -53,6 +56,9 @@ public class JournalWorkflowImpl extends WorkflowSupport implements JournalWorkf
     protected CfJournalDao journalDao;
 
     @Autowired
+    protected CfPrincipalDao principalDao;
+
+    @Autowired
     protected ProcessEngine processEngine;
 
     @Autowired
@@ -82,6 +88,10 @@ public class JournalWorkflowImpl extends WorkflowSupport implements JournalWorkf
         sessionFactory.getCurrentSession().flush();
         sessionFactory.getCurrentSession().refresh(journal);
         ProcessInstance instance = runtimeService.startProcessInstanceByKey(PROCESS_DEF, toVariables(journal));
+
+        context.publishEvent(new AccessEvent(journal, Util.getCurrentUser(), CfAclPermission.VIEW));
+
+
     }
 
     public List<JournalTask> findTasks(CfJournalType journalType, Integer offset, Integer limit) {

@@ -15,6 +15,7 @@ public class CfAutoLoginToken extends AbstractAuthenticationToken {
     public CfAutoLoginToken(CfPrincipal principal) {
         super(null);
         this.principal = principal;
+        setAuthenticated(true);
     }
 
     @Override

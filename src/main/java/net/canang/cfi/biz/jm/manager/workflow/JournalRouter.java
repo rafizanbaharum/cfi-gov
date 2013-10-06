@@ -49,6 +49,7 @@ public class JournalRouter {
         String candidate = "GRP_BDH_PGW";
         CfJournal journal = jmFinder.findJournalById(journalId);
         context.publishEvent(new AccessEvent(journal, groupDao.findByName(candidate), CfAclPermission.VIEW));
+        context.publishEvent(new AccessEvent(journal, groupDao.findByName("GRP_ADM"), CfAclPermission.VIEW));
         return Arrays.asList("GRP_BDH_PGW", DEFAULT_CANDIDATE);
     }
 }

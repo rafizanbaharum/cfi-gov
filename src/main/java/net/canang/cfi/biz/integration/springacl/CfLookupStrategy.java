@@ -1,5 +1,8 @@
 package net.canang.cfi.biz.integration.springacl;
 
+import net.canang.cfi.core.so.dao.CfPrincipalDao;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.ResultSetExtractor;
@@ -7,7 +10,6 @@ import org.springframework.security.acls.domain.*;
 import org.springframework.security.acls.jdbc.LookupStrategy;
 import org.springframework.security.acls.model.*;
 import org.springframework.security.util.FieldUtils;
-import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import javax.sql.DataSource;
@@ -23,6 +25,8 @@ import java.util.*;
  * @since 10/4/13
  */
 public class CfLookupStrategy implements LookupStrategy {
+
+    private static final Logger log = Logger.getLogger(CfLookupStrategy.class);
 
     public final static String DEFAULT_SELECT_CLAUSE = "select acl_object_identity.object_id_identity, "
             + "acl_entry.ace_order,  "
@@ -70,6 +74,9 @@ public class CfLookupStrategy implements LookupStrategy {
     private String lookupPrimaryKeysWhereClause = DEFAULT_LOOKUP_KEYS_WHERE_CLAUSE;
     private String lookupObjectIdentitiesWhereClause = DEFAULT_LOOKUP_IDENTITIES_WHERE_CLAUSE;
     private String orderByClause = DEFAULT_ORDER_BY_CLAUSE;
+
+    @Autowired
+    private CfPrincipalDao principalDao;
 
     //~ Constructors ===================================================================================================
 

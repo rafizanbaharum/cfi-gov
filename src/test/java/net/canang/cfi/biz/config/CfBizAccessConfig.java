@@ -3,6 +3,7 @@ package net.canang.cfi.biz.config;
 import net.canang.cfi.biz.integration.springacl.CfLookupStrategy;
 import net.canang.cfi.biz.integration.springacl.CfPermissionFactory;
 import net.canang.cfi.biz.integration.springacl.CfPostgresqlMutableAclService;
+import net.canang.cfi.biz.integration.springacl.CfSidRetrievalStrategy;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurer;
@@ -17,10 +18,7 @@ import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.acls.AclPermissionEvaluator;
 import org.springframework.security.acls.domain.*;
 import org.springframework.security.acls.jdbc.LookupStrategy;
-import org.springframework.security.acls.model.AclCache;
-import org.springframework.security.acls.model.AclService;
-import org.springframework.security.acls.model.MutableAclService;
-import org.springframework.security.acls.model.PermissionGrantingStrategy;
+import org.springframework.security.acls.model.*;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import javax.sql.DataSource;
@@ -79,6 +77,7 @@ public class CfBizAccessConfig implements CachingConfigurer {
     @Bean
     public LookupStrategy lookupStrategy(DataSource dataSource, AclCache aclCache, AclAuthorizationStrategy authorizationStrategy, PermissionGrantingStrategy permissionGrantingStrategy) {
         return new CfLookupStrategy(dataSource, aclCache, authorizationStrategy, permissionGrantingStrategy);
+
     }
 
     @Bean
@@ -87,12 +86,19 @@ public class CfBizAccessConfig implements CachingConfigurer {
     }
 
     @Bean
-    public AclAuthorizationStrategy aclAuthorizationStrategy(){
-        return new AclAuthorizationStrategyImpl(
+    public AclAuthorizationStrategy aclAuthorizationStrategy(SidRetrievalStrategy sidRetrievalStrategy){
+        AclAuthorizationStrategyImpl aclAuthorizationStrategy = new AclAuthorizationStrategyImpl(
                 new SimpleGrantedAuthority("ROLE_ADMINISTRATOR"),
                 new SimpleGrantedAuthority("ROLE_ADMINISTRATOR"),
                 new SimpleGrantedAuthority("ROLE_ADMINISTRATOR")
-                );
+        );
+         aclAuthorizationStrategy.setSidRetrievalStrategy(sidRetrievalStrategy);
+        return aclAuthorizationStrategy;
+    }
+
+    @Bean
+    public SidRetrievalStrategy sidRetrievalStrategy() {
+        return new CfSidRetrievalStrategy();
     }
 }
 

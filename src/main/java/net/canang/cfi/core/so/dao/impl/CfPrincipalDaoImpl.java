@@ -4,9 +4,7 @@ import net.canang.cfi.core.exception.RecursiveGroupException;
 import net.canang.cfi.core.so.dao.CfPrincipalDao;
 import net.canang.cfi.core.so.dao.CfRoleDao;
 import net.canang.cfi.core.so.dao.DaoSupport;
-import net.canang.cfi.core.so.model.CfMetaState;
-import net.canang.cfi.core.so.model.CfPrincipal;
-import net.canang.cfi.core.so.model.CfPrincipalType;
+import net.canang.cfi.core.so.model.*;
 import net.canang.cfi.core.so.model.impl.CfPrincipalImpl;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
@@ -91,6 +89,12 @@ public class CfPrincipalDaoImpl extends DaoSupport<Long, CfPrincipal, CfPrincipa
         query.setFirstResult(offset);
         query.setMaxResults(limit);
         return (List<CfPrincipal>) query.list();
+    }
+
+    @Override
+    public Set<CfGroup> loadEffectiveGroups(CfPrincipal principal) throws RecursiveGroupException {
+        return null;  // TODO:
+
     }
 
     public Set<GrantedAuthority> loadEffectiveAuthorities(CfPrincipal principal) throws RecursiveGroupException {

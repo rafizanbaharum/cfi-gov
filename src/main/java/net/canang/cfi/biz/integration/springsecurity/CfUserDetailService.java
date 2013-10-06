@@ -1,6 +1,5 @@
 package net.canang.cfi.biz.integration.springsecurity;
 
-import net.canang.cfi.core.exception.RecursiveGroupException;
 import net.canang.cfi.core.so.dao.CfPrincipalDao;
 import net.canang.cfi.core.so.model.CfMetaState;
 import net.canang.cfi.core.so.model.CfPrincipalRole;
@@ -12,7 +11,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -56,17 +55,18 @@ public class CfUserDetailService implements UserDetailsService {
 
     private Set<GrantedAuthority> loadGrantedAuthoritiesFor(CfUser user) {
         Set<GrantedAuthority> grantedAuthorities = new HashSet<GrantedAuthority>();
-        try {
+//        try {
             //load all roles which ties to user
             for (CfPrincipalRole role : user.getRoles()) {
-                grantedAuthorities.add(new GrantedAuthorityImpl(role.getRoleType().name()));
+                grantedAuthorities.add(new SimpleGrantedAuthority(role.getRoleType().name()));
             }
             log.info("load auth for " + user.getName() + "#" + user.getId());
-            grantedAuthorities.addAll(principalDao.loadEffectiveAuthorities(user));
-        } catch (RecursiveGroupException e) {
-            log.error(e.getMessage());
-            grantedAuthorities.clear();
-        }
+         // XXX: will hook this up later
+//            grantedAuthorities.addAll(principalDao.loadEffectiveAuthorities(user));
+//        } catch (RecursiveGroupException e) {
+//            log.error(e.getMessage());
+//            grantedAuthorities.clear();
+//        }
         return grantedAuthorities;
     }
 
