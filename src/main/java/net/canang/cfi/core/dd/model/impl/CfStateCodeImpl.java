@@ -1,5 +1,6 @@
 package net.canang.cfi.core.dd.model.impl;
 
+import net.canang.cfi.core.dd.model.CfCountryCode;
 import net.canang.cfi.core.dd.model.CfStateCode;
 import net.canang.cfi.core.so.model.CfMetadata;
 
@@ -36,9 +37,9 @@ public class CfStateCodeImpl implements CfStateCode, Serializable {
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @OneToOne(targetEntity = CfStateCodeImpl.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "STATE_CODE_ID")
-    private CfStateCode stateCode;
+    @OneToOne(targetEntity = CfCountryCodeImpl.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "COUNTRY_CODE_ID")
+    private CfCountryCode countryCode;
 
     @Embedded
     private CfMetadata metadata;
@@ -75,12 +76,12 @@ public class CfStateCodeImpl implements CfStateCode, Serializable {
         this.description = description;
     }
 
-    public CfStateCode getStateCode() {
-        return stateCode;
+    public CfCountryCode getCountryCode() {
+        return countryCode;
     }
 
-    public void setStateCode(CfStateCode stateCode) {
-        this.stateCode = stateCode;
+    public void setCountryCode(CfCountryCode countryCode) {
+        this.countryCode = countryCode;
     }
 
     public CfMetadata getMetadata() {
