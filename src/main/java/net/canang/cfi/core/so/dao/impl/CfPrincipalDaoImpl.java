@@ -93,6 +93,27 @@ public class CfPrincipalDaoImpl extends DaoSupport<Long, CfPrincipal, CfPrincipa
 
     @Override
     public Set<CfGroup> loadEffectiveGroups(CfPrincipal principal) throws RecursiveGroupException {
+        /**
+with recursive q(user_name,group_name,member_id,group_id) as (
+select h.user_name,h.group_name,h.member_id,h.group_id, 1 as level from (
+select u1.name user_name,g1.name group_name,member_id,group_id from cf_pcpl u1, cf_user u2, cf_pcpl g1, cf_grop g2, cf_grop_mmbr g3
+where u1.id = u2.id
+and g1.id = g2.id and g1.id = g3.group_id
+and g3.member_id = u1.id
+) h
+union all
+select hi.user_name,hi.group_name,hi.member_id,hi.group_id, q.level + 1 as level
+from q, (
+select u1.name user_name,g1.name group_name,member_id,group_id from cf_pcpl u1, cf_user u2, cf_pcpl g1, cf_grop g2, cf_grop_mmbr g3
+where u1.id = u2.id
+and g1.id = g2.id and g1.id = g3.group_id
+and g3.member_id = u1.id
+)hi where hi.member_id = q.group_id
+)
+select * from q;
+         */
+
+
         return null;  // TODO:
 
     }
