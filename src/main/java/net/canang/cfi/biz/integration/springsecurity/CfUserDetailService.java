@@ -47,9 +47,9 @@ public class CfUserDetailService implements UserDetailsService {
         query.setString("username", s);
         query.setInteger("state", CfMetaState.ACTIVE.ordinal());
         user = (CfUser) query.uniqueResult();
-        log.debug(user.getUsername() + " " + user.getPassword());
         if (user == null)
             throw new UsernameNotFoundException("No such user");
+        log.debug(user.getUsername() + " " + user.getPassword());
         return new CfUserDetails(user, loadGrantedAuthoritiesFor(user));
     }
 
