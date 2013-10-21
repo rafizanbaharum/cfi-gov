@@ -79,6 +79,14 @@ public class CfPositionCodeDaoImpl extends DaoSupport<Long, CfPositionCode, CfPo
         return (CfPositionCode) query.uniqueResult();
     }
 
+    @Override
+    public Integer count() {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count (s) from CfPositionCode s where " +
+                "s.metadata.state = :state");
+        query.setInteger("state", ACTIVE.ordinal());
+        return ((Long) query.uniqueResult()).intValue();
+    }
 
     @Override
     public Integer count(String filter) {

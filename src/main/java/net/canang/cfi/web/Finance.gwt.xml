@@ -13,6 +13,7 @@
     <!-- EXP -->
     <inherits name="com.google.gwt.precompress.Precompress"/>
     <inherits name="net.canang.cfi.web.am.AmModule"/>
+    <inherits name="net.canang.cfi.web.dd.DdModule"/>
 
     <!-- For development a default of `DEBUG` is recommended -->
     <inherits name='com.google.gwt.logging.Logging'/>

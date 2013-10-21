@@ -704,6 +704,11 @@ public class DdFinderImpl implements DdFinder {
     }
 
     @Override
+    public Integer countPositionCode() {
+        return positionCodeDao.count();
+    }
+
+    @Override
     public Integer countPositionCode(String filter) {
         return positionCodeDao.count(filter);
     }

@@ -304,6 +304,8 @@ public interface DdFinder {
 
     List<CfPositionCode> findPositionCodes(String filter, Integer offset, Integer limit);
 
+    Integer countPositionCode();
+
     Integer countPositionCode(String filter);
 
     //====================================================================================================

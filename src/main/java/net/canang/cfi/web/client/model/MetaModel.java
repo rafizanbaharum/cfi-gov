@@ -1,6 +1,7 @@
 package net.canang.cfi.web.client.model;
 
 import com.extjs.gxt.ui.client.data.BaseModel;
+import com.google.gwt.user.client.rpc.IsSerializable;
 
 import java.util.Date;
 
@@ -8,7 +9,7 @@ import java.util.Date;
  * @author rafizan.baharum
  * @since 10/20/13
  */
-public class MetaModel extends BaseModel {
+public class MetaModel extends BaseModel implements IsSerializable {
 
     public static final String META_STATE = "metaState";
     public static final String CREATED_DATE = "createdDate";

@@ -76,7 +76,7 @@ public interface AmDelegate extends RemoteService {
     PagingLoadResult<GroupModel> findGroups(String filter, Integer offset, Integer limit) throws Exception;
 
     // ==================================================================================================== //
-    // COST CENTER GROUPS
+    // COST CENTER
     // ==================================================================================================== //
 
     PagingLoadResult<CostCenterModel> findCostCenters(Integer offset, Integer limit) throws Exception;

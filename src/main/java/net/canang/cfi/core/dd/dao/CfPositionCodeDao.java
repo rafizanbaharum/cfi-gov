@@ -27,6 +27,8 @@ public interface CfPositionCodeDao {
 
     List<CfPositionCode> find(String filter, Integer offset, Integer limit);
 
+    Integer count();
+
     Integer count(String filter);
 
     // ====================================================================================================

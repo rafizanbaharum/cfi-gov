@@ -90,6 +90,15 @@
     <!-- SERVLET DEFINITION -->
     <!-- ====================================================================================== -->
     <servlet>
+        <servlet-name>SoDelegate</servlet-name>
+        <servlet-class>net.canang.cfi.web.so.server.SoDelegateImpl</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SoDelegate</servlet-name>
+        <url-pattern>/net.canang.cfi.web.Finance/SoDelegate</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>AmDelegate</servlet-name>
         <servlet-class>net.canang.cfi.web.am.server.AmDelegateImpl</servlet-class>
     </servlet>
@@ -97,6 +106,16 @@
     <servlet-mapping>
         <servlet-name>AmDelegate</servlet-name>
         <url-pattern>/net.canang.cfi.web.Finance/AmDelegate</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DdDelegate</servlet-name>
+        <servlet-class>net.canang.cfi.web.dd.server.DdDelegateImpl</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DdDelegate</servlet-name>
+        <url-pattern>/net.canang.cfi.web.Finance/DdDelegate</url-pattern>
     </servlet-mapping>
 
 
