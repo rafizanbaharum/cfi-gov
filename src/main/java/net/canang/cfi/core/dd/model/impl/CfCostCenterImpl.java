@@ -13,8 +13,8 @@ import java.util.List;
  *
  * @author canang.technologies
  */
-@Table(name = "CF_COST_CNTR")
 @Entity(name = "CfCostCenter")
+@Table(name = "CF_COST_CNTR")
 public class CfCostCenterImpl implements CfCostCenter, Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -23,6 +23,8 @@ public interface CfPositionCodeDao {
 
     CfPositionCode findByGrade(Integer grade);
 
+    List<CfPositionCode> find(Integer offset, Integer limit);
+
     List<CfPositionCode> find(String filter, Integer offset, Integer limit);
 
     Integer count(String filter);
@@ -30,5 +32,6 @@ public interface CfPositionCodeDao {
     // ====================================================================================================
     // CRUD
     // ====================================================================================================
+
 
 }

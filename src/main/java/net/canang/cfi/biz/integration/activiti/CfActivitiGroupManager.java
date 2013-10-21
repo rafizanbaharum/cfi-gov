@@ -55,7 +55,7 @@ public class CfActivitiGroupManager extends GroupEntityManager {
         CfUser user = userDao.findByUsername(userId);
         List<Group> groups = new ArrayList<Group>();
         try {
-            List<CfGroup> principalGroups = groupDao.findPrincipalGroups(user);
+            List<CfGroup> principalGroups = groupDao.findMemberships(user);
             for (CfGroup group : principalGroups) {
                 CfActivitiGroup g = new CfActivitiGroup(group);
                 groups.add(g);

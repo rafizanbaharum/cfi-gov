@@ -24,6 +24,8 @@ public interface CfCostCenterDao {
 
     CfCostCenter findById(Long id);
 
+    CfCostCenterMember findMemberById(Long id);
+
     CfCostCenter findByCode(String code);
 
     List<CfCostCenter> find(Integer offset, Integer limit);
@@ -60,6 +62,10 @@ public interface CfCostCenterDao {
 
     List<CfCostCenter> find(Set<String> principals, Integer offset, Integer limit);
 
+    List<CfCostCenterMember> findMembers(CfCostCenter costCenter);
+
+    List<CfCostCenterMember> findMembers(CfCostCenter costCenter, Integer offset, Integer limit);
+
     Integer count();
 
     Integer count(String filter);
@@ -69,6 +75,8 @@ public interface CfCostCenterDao {
     Integer count(List<CfPrincipal> principals);
 
     Integer count(Set<String> principals);
+
+    Integer countMember(CfCostCenter costCenter);
 
     boolean isExist(String code);
 
@@ -83,4 +91,13 @@ public interface CfCostCenterDao {
     void deactivate(CfCostCenter costCenter, CfUser user);
 
     void remove(CfCostCenter costCenter, CfUser user);
+
+    void addMember(CfCostCenter costCenter, CfPrincipal principal, CfUser user);
+
+    void addMembers(CfCostCenter costCenter, List<CfPrincipal> principals, CfUser user);
+
+    void removeMember(CfCostCenter costCenter, CfPrincipal principal, CfUser user);
+
+    void removeMembers(CfCostCenter costCenter, List<CfPrincipal> principals, CfUser user);
+
 }

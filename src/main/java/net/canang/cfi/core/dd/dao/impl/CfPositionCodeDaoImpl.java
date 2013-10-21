@@ -16,6 +16,7 @@ import static net.canang.cfi.core.so.model.CfMetaState.ACTIVE;
 /**
  * @author : alif haikal razak
  */
+@SuppressWarnings({"unchecked"})
 @Repository("positionCodeDao")
 public class CfPositionCodeDaoImpl extends DaoSupport<Long, CfPositionCode, CfPositionCodeImpl> implements CfPositionCodeDao {
 
@@ -35,6 +36,16 @@ public class CfPositionCodeDaoImpl extends DaoSupport<Long, CfPositionCode, CfPo
     @Override
     public CfPositionCode findByGrade(Integer grade) {
         return findByGrade(grade.toString());
+    }
+
+    @Override
+    public List<CfPositionCode> find(Integer offset, Integer limit) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select c from CfPositionCode c where " +
+                " c.metadata.state = :state");
+        query.setInteger("state", ACTIVE.ordinal());
+        query.setCacheable(true);
+        return (List<CfPositionCode>) query.list();
     }
 
     @Override

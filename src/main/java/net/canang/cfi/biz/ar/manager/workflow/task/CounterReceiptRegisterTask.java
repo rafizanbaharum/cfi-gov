@@ -2,7 +2,6 @@ package net.canang.cfi.biz.ar.manager.workflow.task;
 
 import net.canang.cfi.biz.Util;
 import net.canang.cfi.core.ar.model.CfReceipt;
-import net.canang.cfi.core.dd.model.CfReferenceNoConstants;
 import net.canang.cfi.core.so.model.CfFlowState;
 import org.activiti.engine.impl.pvm.delegate.ActivityExecution;
 import org.apache.log4j.Logger;
@@ -25,7 +24,7 @@ public class CounterReceiptRegisterTask extends ReceiptTaskSupport {
         CfReceipt receipt = arFinder.findReceiptById(receiptId);
 
         // create receipt no
-        receipt.setReceiptNo(ddManager.generateReferenceNo(CfReferenceNoConstants.RECEIPT_REFERENCE_NO));
+//        receipt.setReceiptNo(ddManager.generateReferenceNo(CfReferenceNoConstants.RECEIPT_REFERENCE_NO));
 
         // update flow state
         receipt.getFlowdata().setState(CfFlowState.REGISTERED);

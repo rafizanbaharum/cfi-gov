@@ -9,10 +9,6 @@ import java.util.List;
 
 public interface CfControl extends CfDocument {
 
-    String getDescription();
-
-    void setDescription(String description);
-
     BigDecimal getTotalAmount();
 
     void setTotalAmount(BigDecimal totalAmount);

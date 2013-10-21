@@ -89,16 +89,14 @@
     <!-- ====================================================================================== -->
     <!-- SERVLET DEFINITION -->
     <!-- ====================================================================================== -->
-
-    <!-- PST: PST -->
     <servlet>
-        <servlet-name>PstDelegateService</servlet-name>
-        <servlet-class>net.canang.cfi.web.jm.server.JmDelegateImpl</servlet-class>
+        <servlet-name>AmDelegate</servlet-name>
+        <servlet-class>net.canang.cfi.web.am.server.AmDelegateImpl</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>JmDelegateService</servlet-name>
-        <url-pattern>/net.canang.cfi.web.Finance/JmDelegateService</url-pattern>
+        <servlet-name>AmDelegate</servlet-name>
+        <url-pattern>/net.canang.cfi.web.Finance/AmDelegate</url-pattern>
     </servlet-mapping>
 
 

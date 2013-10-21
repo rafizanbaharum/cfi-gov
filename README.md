@@ -57,34 +57,33 @@ objects and entities. Please refer to the extensibility section of our documenta
 
 
 ### Modules
-* 00 SO - Shared Object
-* 01 AM - Access Management
-* 02 PM - Process Management
-* 03 HM - History Management
-* 04 DD - Data Dictionary
-* 05 GL - General Ledger
-* 06 VM - Vote Management
-* 07 JM - Journal Management
-* 08 BM - Budget Management
-* 09 DM - Disbursement Management
-* 10 AP - Account Payable
-* 11 AR - Account Receivable
+* 00 SO - Shared Object / common
+* 01 AM - Access Management / acces
+* 02 PM - Process Management / process
+* 03 HM - History Management / history
+* 04 DD - Data Dictionary / dictionary
+* 05 GL - General Ledger  / ledger
+* 06 VM - Vote Management / vote
+* 07 JM - Journal Management  / journal
+* 08 BM - Budget Management   / budget
+* 09 DM - Disbursement Management / disbursement
+* 10 AP - Account Payable         / payable
+* 11 AR - Account Receivable      / receivable
 
 
 ###Extension Points
 * custom data asas
-*  document extension (Journal MANUAL, AUTO);
-*  reference no (campus, dept etc)
-*  secondary refno (journal no, voucher no)
-*  queries, workflow with queries/written direction
-*  workflow basic PTJ -> BENDAHARI, no zone, shared, group etc
-*   currency in receipt
-*  sub type in receipt
-*  upper approval in workflow
-*  complex router
-*  cost center structure
-*  item code / sodo code customization, basic only use sodo code
-
+* document extension (Journal MANUAL, AUTO);
+* reference no (campus, dept etc)
+* secondary refno (journal no, voucher no)
+* queries, workflow with queries/written direction
+* workflow basic PTJ -> BENDAHARI, no zone, shared, group etc
+* currency in receipt
+* sub type in receipt
+* upper approval in workflow
+* complex router
+* cost center structure
+* item code / sodo code customization, basic only use sodo code
 
 ###Permission
 * VIEW
@@ -128,6 +127,7 @@ objects and entities. Please refer to the extensibility section of our documenta
 * MMBR=MEMBER
 * MODL=MODULE
 * PCPL=PRINCIPAL
+* PLAN = PLAN
 * PYBL=PAYABLE
 * PYMT=PAYMENT
 * PRJT=PROJECT

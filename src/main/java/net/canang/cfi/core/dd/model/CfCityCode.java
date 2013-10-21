@@ -16,4 +16,7 @@ public interface CfCityCode extends CfMetaObject {
     String getDescription();
 
     String getSummary();
+
+    CfStateCode getStateCode();
+
 }

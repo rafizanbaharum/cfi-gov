@@ -1,11 +1,13 @@
 package net.canang.cfi.core.dd.model;
 
+import net.canang.cfi.core.so.model.CfMetaObject;
+
 /**
  * todo: comment
  *
  * @author canang.technologies
  */
-public interface CfBankCode {
+public interface CfBankCode extends CfMetaObject{
 
     String getCode();
 

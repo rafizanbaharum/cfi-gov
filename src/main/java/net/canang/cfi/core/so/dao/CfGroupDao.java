@@ -27,7 +27,7 @@ public interface CfGroupDao {
 
     List<CfPrincipal> findMembers(CfGroup group, CfPrincipalType type);
 
-    List<CfGroup> findPrincipalGroups(CfPrincipal principal);
+    List<CfGroup> findMemberships(CfPrincipal principal);
 
     List<CfPrincipal> findMembers(CfGroup group, Integer offset, Integer limit);
 

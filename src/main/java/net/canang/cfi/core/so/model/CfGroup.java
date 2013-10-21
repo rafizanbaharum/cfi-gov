@@ -8,6 +8,9 @@ import java.util.Set;
  */
 public interface CfGroup extends CfPrincipal {
 
+    public static final String ROOT_GROUP = "GRP_USR";
+
+
     Set<CfGroupMember> getMembers();
 
     void setMembers(Set<CfGroupMember> members);

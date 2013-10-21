@@ -110,7 +110,7 @@ public class CfGroupDaoImpl extends DaoSupport<Long, CfGroup, CfGroupImpl> imple
     }
 
     @Override
-    public List<CfGroup> findPrincipalGroups(CfPrincipal principal) {
+    public List<CfGroup> findMemberships(CfPrincipal principal) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select gm.group from CfGroupMember gm inner join gm.principal where " +
                 "gm.principal = :principal");

@@ -6,7 +6,8 @@ import java.util.List;
 
 
 /**
- * denormalize [fund.code].[responsibilityCenter.code].[project.code].[subproject.code]
+ * NOTE:
+ * format: [fundCode].[departmentCode].[projectCode].[subProjectCode]
  */
 public interface CfCostCenter extends CfMetaObject {
 

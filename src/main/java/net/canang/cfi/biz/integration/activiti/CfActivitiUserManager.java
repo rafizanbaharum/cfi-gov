@@ -58,7 +58,7 @@ public class CfActivitiUserManager extends UserEntityManager {
     public List<Group> findGroupsByUser(String userId) {
         log.debug("username:" + userId);
         CfUser byUsername = userDao.findByUsername(userId);
-        List<CfGroup> principalGroups = groupDao.findPrincipalGroups(byUsername);
+        List<CfGroup> principalGroups = groupDao.findMemberships(byUsername);
         List<Group> groups = new ArrayList<Group>();
         for (CfGroup group : principalGroups) {
             log.debug("group:" + group);

@@ -1,6 +1,5 @@
 package net.canang.cfi.core.so.model.impl;
 
-import net.canang.cfi.core.dd.model.CfConsumerType;
 import net.canang.cfi.core.so.model.CfActorType;
 import net.canang.cfi.core.so.model.CfVendor;
 

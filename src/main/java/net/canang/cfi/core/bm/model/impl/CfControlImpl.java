@@ -21,7 +21,7 @@ import java.util.List;
 @Table(name = "CF_CTRL")
 @Entity(name = "CfControl")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class CfControlImpl extends CfDocumentImpl implements CfControl, Serializable {
+public class  CfControlImpl extends CfDocumentImpl implements CfControl, Serializable {
 
     private static final long serialVersionUID = 1L;
 
