@@ -5,6 +5,16 @@
 		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
 
+
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+    </context-param>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>net.canang.cfi.web.config.CfWebConfig</param-value>
+    </context-param>
+
     <!-- ====================================================================================== -->
     <!-- SECURITY CONFIG FILTER -->
     <!-- ====================================================================================== -->
@@ -150,5 +160,9 @@
     <session-config>
         <session-timeout>120</session-timeout>
     </session-config>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
 
 </web-app>

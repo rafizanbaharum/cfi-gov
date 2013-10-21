@@ -8,7 +8,6 @@
     <inherits name='com.extjs.gxt.ui.GXT'/>
     <inherits name="com.extjs.gxt.themes.Themes"/>
     <inherits name='com.extjs.gxt.charts.Chart'/>
-    <set-configuration-property name="log_pattern" value="%d %5p [%t]  (%F:%L) - %m%n"/>
 
     <!-- EXP -->
     <inherits name="com.google.gwt.precompress.Precompress"/>

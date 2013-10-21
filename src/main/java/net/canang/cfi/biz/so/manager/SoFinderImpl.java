@@ -5,6 +5,7 @@ import net.canang.cfi.core.dd.model.CfReferenceNo;
 import net.canang.cfi.core.so.dao.*;
 import net.canang.cfi.core.so.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 10/21/13
  */
+@Component("soFinder")
 public class SoFinderImpl implements SoFinder {
 
     @Autowired

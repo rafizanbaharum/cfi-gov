@@ -38,11 +38,11 @@ public interface CfDepartmentCodeDao {
     // CRUD
     // ====================================================================================================
 
-    CfDepartmentCode save(CfDepartmentCode responsibilityCenter, CfUser user);
+    void save(CfDepartmentCode responsibilityCenter, CfUser user);
 
-    CfDepartmentCode update(CfDepartmentCode responsibilityCenter, CfUser user);
+    void update(CfDepartmentCode responsibilityCenter, CfUser user);
 
-    CfDepartmentCode deactivate(CfDepartmentCode responsibilityCenter, CfUser user);
+    void deactivate(CfDepartmentCode responsibilityCenter, CfUser user);
 
     void remove(CfDepartmentCode responsibilityCenter, CfUser user);
 

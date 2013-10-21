@@ -34,7 +34,7 @@ import java.util.Map;
  * @since 10/3/13
  */
 @Transactional
-@Service("journalWorkfLow")
+@Service("journalWorkflow")
 public class JournalWorkflowImpl extends WorkflowSupport implements JournalWorkflow {
 
     private Logger log = LoggerFactory.getLogger(JournalWorkflowImpl.class);

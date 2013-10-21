@@ -1,6 +1,5 @@
 package net.canang.cfi.biz.am.manager;
 
-import net.canang.cfi.biz.integration.springacl.CfSidRetrievalStrategy;
 import net.canang.cfi.biz.integration.springsecurity.CfUserDetails;
 import net.canang.cfi.core.am.dao.CfModuleDao;
 import net.canang.cfi.core.am.model.CfModule;
@@ -11,9 +10,11 @@ import org.perf4j.aop.Profiled;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.acls.domain.PrincipalSid;
 import org.springframework.security.acls.model.Sid;
+import org.springframework.security.acls.model.SidRetrievalStrategy;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
@@ -23,12 +24,13 @@ import static java.lang.Boolean.TRUE;
  * @author rafizan.baharum
  * @since 10/20/13
  */
+@Component("amFinder")
 public class AmFinderImpl implements AmFinder {
 
     private static final Logger log = Logger.getLogger(AmFinderImpl.class);
 
     @Autowired
-    private CfSidRetrievalStrategy sidRetrievalStrategy;
+    private SidRetrievalStrategy sidRetrievalStrategy;
 
     @Autowired
     private CfModuleDao moduleDao;

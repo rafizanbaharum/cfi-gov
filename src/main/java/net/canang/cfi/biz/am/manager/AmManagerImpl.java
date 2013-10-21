@@ -17,6 +17,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ import static net.canang.cfi.biz.event.AccessEvent.Command.REVOKE;
  * @author rafizan.baharum
  * @since 10/20/13
  */
+@Component("amManager")
 public class AmManagerImpl implements AmManager {
 
     private static final Logger log = Logger.getLogger(AmManagerImpl.class);

@@ -12,6 +12,7 @@ import net.canang.cfi.core.so.model.CfActor;
 import net.canang.cfi.core.so.model.CfConfiguration;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.text.*;
 import java.util.Date;
@@ -20,6 +21,7 @@ import java.util.Date;
  * @author rafizan.baharum
  * @since 10/21/13
  */
+@Component("soManager")
 public class SoManagerImpl implements SoManager {
 
     @Autowired

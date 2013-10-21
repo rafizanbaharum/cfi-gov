@@ -33,7 +33,7 @@ public class AccessListener implements ApplicationListener<AccessEvent> {
 
     private static final String ROOT = "root";
 
-    @Autowired
+    @Autowired(required = false) // todo
     private AuthenticationManager authenticationManager;
 
     @Autowired
