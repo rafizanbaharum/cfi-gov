@@ -13,7 +13,11 @@
         <appender-ref ref="CONSOLE"/>
     </logger>
     <logger name="org.springframework.security.authentication" additivity="false">
-        <level value="DEBUG"/>
+        <level value="ERROR"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <logger name="org.springframework.security" additivity="false">
+        <level value="ERROR"/>
         <appender-ref ref="CONSOLE"/>
     </logger>
     <logger name="org.hibernate" additivity="false">

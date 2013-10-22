@@ -28,6 +28,7 @@ public class CfWebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
+                .antMatchers("/gxt/**")
                 .antMatchers("/resources/**");
     }
 
@@ -42,14 +43,14 @@ public class CfWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/secure/dashboard")
+                .defaultSuccessUrl("/secure/application.html?gwt.codesvr=127.0.0.1:9997")
                 .failureUrl("/index.html?login_error=1")
                 .loginPage("/index.html")
                 .permitAll()
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/index")
+                .logoutSuccessUrl("/index.html")
                 .invalidateHttpSession(true);
     }
 

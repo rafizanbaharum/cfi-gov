@@ -1,0 +1,166 @@
+* {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "bitstream vera sans", "trebuchet ms", verdana;
+}
+
+/* override */
+.x-tab-panel-body {
+    background-color: #efefef;
+}
+
+/* main viewport */
+#app-main-viewport {
+    background-color: #660000;
+}
+
+/* each module container */
+.app-module-container {
+    background-color: #660000;
+}
+
+/* each module container */
+.app-module-center-container {
+    background: url(../../gxt/images/bg/bg-box.png) repeat;
+}
+
+/* top button bar */
+#app-main-buttonbar {
+    background: #ffffcc url(../../gxt/images/bg/utm-logo.png) no-repeat right top;
+}
+
+/* top button bar */
+#app-breadcrumb-buttonbar {
+    background: #660000 url(../../gxt/images/bg/bg-breadcrumb.png) repeat-x left top;
+}
+
+/* info panel */
+.app-info-panel {
+    font-size: 12px;
+    padding: 10px;
+    line-height: 150%;
+}
+
+/* custom button */
+.main-button .x-btn-tl, .main-button .x-btn-tr, .main-button .x-btn-tc,
+.main-button .x-btn-ml, .main-button .x-btn-mr, .main-button .x-btn-mc,
+.main-button .x-btn-bl, .main-button .x-btn-br, .main-button .x-btn-bc {
+    background-image: url(../../gxt/images/button/main-btn.gif) !important;
+}
+
+/* custom button */
+.breadcrumb-button .x-btn-tl, .breadcrumb-button .x-btn-tr, .breadcrumb-button .x-btn-tc,
+.breadcrumb-button .x-btn-ml, .breadcrumb-button .x-btn-mr, .breadcrumb-button .x-btn-mc,
+.breadcrumb-button .x-btn-bl, .breadcrumb-button .x-btn-br, .breadcrumb-button .x-btn-bc {
+    background-image: url(../../gxt/images/button/breadcrumb-btn.gif) !important;
+}
+
+#app-main-buttonbar .x-btn button {
+    color: white;
+    font-weight: bolder;
+}
+
+#app-main-buttonbar .x-btn-menu-active .x-btn-text {
+    color: black;
+}
+
+#app-main-buttonbar, .x-btn-pressed .x-btn-text {
+    color: black;
+}
+
+#app-breadcrumb-buttonbar .x-btn button {
+    color: #666;
+    font-weight: bold;
+}
+
+.x-menu {
+    border-color: #f3d487;
+    background-color: #f3d487;
+    background-image: url(../../gxt/images/menu/menu.gif);
+    color: white;
+    font-weight: bold;
+}
+
+a.x-menu-item {
+    color: #fff;
+}
+
+.x-menu-item-active a.x-menu-item {
+    color: #fff;
+}
+
+.x-menu-item-active {
+    background-color: #660000;
+    background: #660000 url(../../gxt/images/menu/item-over.gif) repeat-x left bottom;
+    border: 1px solid #660000;
+    padding: 0;
+}
+
+.user-main-menu .x-tree3-el .x-tree3-node-text {
+    font-size: 12px;
+    color: #000;
+}
+
+.user-main-menu .x-tree-node-joint {
+    display: none;
+}
+
+.user-main-menu .x-tree3-node-ct .x-tree3-node-text {
+    font-size: 12px;
+    color: #000;
+}
+
+.red {
+    background-color: #FFCCCC !important;
+}
+
+.yellow {
+    background-color: #FFFFCC !important;
+}
+
+.green {
+    background-color: #CCFFCC !important;
+}
+
+.x-toolbar .xtb-arrowsep {
+    background-image: url(../../gxt/images/button/arrowsep.gif);
+}
+
+.x-toolbar .xtb-arrowsep {
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
+    font-size: 1px;
+    height: 16px;
+    width: 12px;
+    overflow: hidden;
+    cursor: default;
+    margin: 0 2px 0;
+    border: 0;
+}
+
+.app-link-header {
+    background: #ffffff url(../../gxt/images/bg/form.png) no-repeat left center;
+    width: 100%;
+    font-size: 14px;
+    font-weight: bolder;
+    text-decoration: underline;
+    text-indent: 20px;
+    color: #660000;
+}
+
+#app-links .app-link {
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 16px;
+    background: #ffffff url(../../gxt/images/button/arrowsep.gif) no-repeat left center;
+    color: #666666;
+}
+
+.ellipsis {
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
