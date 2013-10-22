@@ -24,5 +24,8 @@ public interface FinanceConstants {
     public static final String CONTROLLER_DD = "dd:controller";
     public static final String CONTROLLER_BM = "bm:controller";
 
+    public static final String APP_MAIN_MENU = "app:main:menu";
+    public static final String APP_MAIN_CANVAS = "app:main:canvas";
+    public static final String APP_MAIN_BREADCRUMB = "app:main:breadcrumb";
 
 }

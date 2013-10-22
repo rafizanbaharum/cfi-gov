@@ -1,16 +1,91 @@
+
+/*
+
+app-viewport
+  app-header
+  app-main
+    app-main-breadcrumb
+    app-main-menu
+        app-main-menu-tree
+    app-main-canvas
+
+
+
+*/
+
 * {
     font-family: "Lucida Grande", "Lucida Sans Unicode", "bitstream vera sans", "trebuchet ms", verdana;
 }
+
+/* main viewport */
+#app-viewport {
+    background-color: #ffffff;
+}
+
+#app-header {
+    background-color: #63ACD7;
+}
+
+#app-main {
+    background-color: #ffffff;
+}
+
+#app-main-menu {
+    background-color: #fefefe;
+    border-color: #777777;
+}
+
+#app-main-breadcrumb {
+    background-color: #ffffff;
+}
+#app-main-canvas {
+    background-color: #ffffff;
+}
+
+#app-main-menu-tree .x-tree3-el {
+    height: 30px;
+}
+
+#app-main-menu-tree .x-tree3-el .x-tree3-node-text {
+    font-size: 12px;
+    color: #3399bb;
+    font-weight: bolder;
+}
+
+#app-main-menu-tree .x-tree-node-joint {
+    display: none;
+}
+
+#app-main-menu-tree .x-tree3-node-ct .x-tree3-node-text {
+    font-size: 12px;
+    color: #000;
+}
+
+
+/* ==================================================================================================== */
+/* old stuff */
+/* ==================================================================================================== */
+
 
 /* override */
 .x-tab-panel-body {
     background-color: #efefef;
 }
 
-/* main viewport */
-#app-main-viewport {
-    background-color: #660000;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* each module container */
 .app-module-container {
