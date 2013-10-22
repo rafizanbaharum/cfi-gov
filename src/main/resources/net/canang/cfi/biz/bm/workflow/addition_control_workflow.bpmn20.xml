@@ -95,7 +95,7 @@
             </documentation>
         </userTask>
 
-        <sequenceFlow id="flow4.2" sourceRef="additionControl_verify_UT" targetRef="additionControl_check_ST"/>
+        <sequenceFlow id="flow4.2" sourceRef="additionControl_verify_UT" targetRef="additionControl_checked_ST"/>
 
         <!--
         ====================================================================================================
