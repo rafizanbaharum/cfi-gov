@@ -1,4 +1,4 @@
-package net.canang.cfi.web.client.view;
+package net.canang.cfi.web.client;
 
 import com.extjs.gxt.ui.client.GXT;
 import com.extjs.gxt.ui.client.Registry;
@@ -12,8 +12,6 @@ import com.google.gwt.logging.impl.FormatterImpl;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import net.canang.cfi.web.am.client.AmDelegate;
 import net.canang.cfi.web.am.client.AmDelegateAsync;
-import net.canang.cfi.web.client.FinanceConstants;
-import net.canang.cfi.web.client.FinanceEvents;
 import net.canang.cfi.web.client.controller.FinanceController;
 import net.canang.cfi.web.dd.client.DdDelegate;
 import net.canang.cfi.web.dd.client.DdDelegateAsync;

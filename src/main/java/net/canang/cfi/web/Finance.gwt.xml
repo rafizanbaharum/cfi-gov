@@ -24,8 +24,8 @@
     <set-property name="gwt.logging.firebugHandler" value="DISABLED"/>
     <set-property name="gwt.logging.systemHandler" value="ENABLED"/>
 
-    <entry-point class='my.utm.fs.web.client.Finance'/>
+    <entry-point class='net.canang.cfi.web.client.Finance'/>
 
     <!-- speeding up -->
-    <set-property name="user.agent" value="gecko1_8"/>
+    <set-property name="user.agent" value="safari"/>
 </module>
