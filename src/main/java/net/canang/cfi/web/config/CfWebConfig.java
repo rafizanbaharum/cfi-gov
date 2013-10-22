@@ -78,10 +78,11 @@ public class CfWebConfig {
     @Bean
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setUsername("cfi");
-        dataSource.setPassword("cfi");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/cfi");
-        dataSource.setDriverClassName("org.postgresql.Driver");
+        dataSource.setUsername(environment.getProperty("db.username"));
+        dataSource.setPassword(environment.getProperty("db.password"));
+        dataSource.setUrl(environment.getProperty("db.url"));
+        dataSource.setDriverClassName(environment.getProperty("db.url"));
+        dataSource.setDriverClassName(environment.getProperty("db.driver"));
         dataSource.setInitialSize(10);
         dataSource.setMaxActive(5);
         dataSource.setMaxWait(5000);

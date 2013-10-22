@@ -27,7 +27,7 @@ import java.util.Properties;
 public class CfCoreConfig {
 
     @Autowired
-    private Environment env;
+    private Environment environment;
 
     @Bean
     public SessionFactory sessionFactory() {
@@ -78,10 +78,10 @@ public class CfCoreConfig {
     @Bean
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setUsername(env.getProperty("db.username"));
-        dataSource.setPassword(env.getProperty("db.password"));
-        dataSource.setUrl(env.getProperty("db.url"));
-        dataSource.setDriverClassName("org.postgresql.Driver");
+        dataSource.setUsername(environment.getProperty("db.username"));
+        dataSource.setPassword(environment.getProperty("db.password"));
+        dataSource.setUrl(environment.getProperty("db.url"));
+        dataSource.setDriverClassName(environment.getProperty("db.driver"));
         dataSource.setInitialSize(2);
         dataSource.setMaxActive(5);
         dataSource.setMaxWait(5000);
