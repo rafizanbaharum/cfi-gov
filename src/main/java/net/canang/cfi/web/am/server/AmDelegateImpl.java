@@ -1,4 +1,4 @@
-    package net.canang.cfi.web.am.server;
+package net.canang.cfi.web.am.server;
 
 import com.extjs.gxt.ui.client.data.BaseListLoadResult;
 import com.extjs.gxt.ui.client.data.BasePagingLoadResult;
@@ -79,7 +79,7 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
     @Autowired
     private SoConverter soConverter;
 
-    @Autowired
+    @Autowired(required = false) // todo
     private AuthenticationManager authenticationManager;
 
     private static DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);

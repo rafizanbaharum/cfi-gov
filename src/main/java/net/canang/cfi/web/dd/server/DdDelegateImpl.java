@@ -14,7 +14,6 @@ import net.canang.cfi.web.server.common.AutoInjectingRemoteServiceServlet;
 import net.canang.cfi.web.so.server.SoConverter;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 
 /**
  * @author rafizan.baharum
@@ -41,9 +40,6 @@ public class DdDelegateImpl extends AutoInjectingRemoteServiceServlet implements
 
     @Autowired
     private SoConverter soConverter;
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
 
     // ==================================================================================================== //
     // COUNTRY

@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 
 /**
  * http://spring.io/blog/2013/07/03/spring-security-java-config-preview-web-security/
@@ -28,22 +29,25 @@ public class CfWebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/gxt/**")
-                .antMatchers("/resources/**");
+                .antMatchers("/gxt/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .headers()
+                .addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
+                .and()
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/*").permitAll()
+                .antMatchers("/net.canang.cfi.web.Finance/**").permitAll()
                 .antMatchers("/secure/**").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/secure/application.html?gwt.codesvr=127.0.0.1:9997")
+                .defaultSuccessUrl("/application.html?gwt.codesvr=127.0.0.1:9997")
                 .failureUrl("/index.html?login_error=1")
                 .loginPage("/index.html")
                 .permitAll()

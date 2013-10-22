@@ -1,13 +1,19 @@
 package net.canang.cfi.web.client.view;
 
+import com.extjs.gxt.ui.client.Style;
 import com.extjs.gxt.ui.client.mvc.AppEvent;
 import com.extjs.gxt.ui.client.mvc.Controller;
 import com.extjs.gxt.ui.client.mvc.Dispatcher;
 import com.extjs.gxt.ui.client.mvc.View;
+import com.extjs.gxt.ui.client.util.Margins;
+import com.extjs.gxt.ui.client.widget.Html;
 import com.extjs.gxt.ui.client.widget.LayoutContainer;
 import com.extjs.gxt.ui.client.widget.Viewport;
 import com.extjs.gxt.ui.client.widget.layout.BorderLayout;
+import com.extjs.gxt.ui.client.widget.layout.BorderLayoutData;
+import com.extjs.gxt.ui.client.widget.layout.FitLayout;
 import com.google.gwt.user.client.ui.RootPanel;
+import net.canang.cfi.web.client.FinanceEvents;
 
 import java.util.logging.Logger;
 
@@ -28,8 +34,7 @@ public class FinanceView extends View {
 
     @Override
     protected void handleEvent(AppEvent appEvent) {
-        // TODO:
-
+        onInitApplicationView();
     }
 
     private void onInitApplicationModel() {
@@ -41,8 +46,15 @@ public class FinanceView extends View {
         viewport = new Viewport();
         viewport.setId("app-main-viewport");
         viewport.setLayout(new BorderLayout());
+
+        BorderLayoutData data = new BorderLayoutData(Style.LayoutRegion.CENTER);
+        data.setMargins(new Margins(0, 0, 0, 0));
+        LayoutContainer mainContainer = new LayoutContainer();
+        mainContainer.setLayout(new FitLayout());
+        mainContainer.setId("app-main-panel");
+        mainContainer.add(new Html("texxxxxxst"));
+        viewport.add(mainContainer, data);
         RootPanel.get().add(viewport);
-//        dispatcher.dispatch(FinanceEvents.InitApplicationModule);
-//        dispatcher.dispatch(FinanceEvents.NavModuleDsh);
+        dispatcher.dispatch(FinanceEvents.InitApplicationModule);
     }
 }

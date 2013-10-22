@@ -15,6 +15,10 @@ import net.canang.cfi.web.am.client.AmDelegateAsync;
 import net.canang.cfi.web.client.FinanceConstants;
 import net.canang.cfi.web.client.FinanceEvents;
 import net.canang.cfi.web.client.controller.FinanceController;
+import net.canang.cfi.web.dd.client.DdDelegate;
+import net.canang.cfi.web.dd.client.DdDelegateAsync;
+import net.canang.cfi.web.so.client.SoDelegate;
+import net.canang.cfi.web.so.client.SoDelegateAsync;
 
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
@@ -48,10 +52,17 @@ public class Finance implements EntryPoint {
         }
 
         // loading system delegate
-        AmDelegateAsync delegate = (AmDelegateAsync) GWT.create(AmDelegate.class);
-        ServiceDefTarget endpoint = (ServiceDefTarget) delegate;
-        endpoint.setServiceEntryPoint(GWT.getModuleBaseURL() + FinanceConstants.ENDPOINT_AM);
-        Registry.register(FinanceConstants.DELEGATE_AM, delegate);
+        AmDelegateAsync amDelegate = (AmDelegateAsync) GWT.create(AmDelegate.class);
+        ((ServiceDefTarget) amDelegate).setServiceEntryPoint(GWT.getModuleBaseURL() + FinanceConstants.ENDPOINT_AM);
+        Registry.register(FinanceConstants.DELEGATE_AM, amDelegate);
+
+        SoDelegateAsync soDelegate = (SoDelegateAsync) GWT.create(SoDelegate.class);
+        ((ServiceDefTarget) amDelegate).setServiceEntryPoint(GWT.getModuleBaseURL() + FinanceConstants.ENDPOINT_SO);
+        Registry.register(FinanceConstants.DELEGATE_SO, soDelegate);
+
+        DdDelegateAsync ddDelegate = (DdDelegateAsync) GWT.create(DdDelegate.class);
+        ((ServiceDefTarget) ddDelegate).setServiceEntryPoint(GWT.getModuleBaseURL() + FinanceConstants.ENDPOINT_DD);
+        Registry.register(FinanceConstants.DELEGATE_DD, ddDelegate);
 
         // add main application controller
         // trigger InitApplicationModel event

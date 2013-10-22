@@ -10,9 +10,10 @@
     <inherits name='com.extjs.gxt.charts.Chart'/>
 
     <!-- EXP -->
-    <inherits name="com.google.gwt.precompress.Precompress"/>
+    <!--<inherits name="com.google.gwt.precompress.Precompress"/>-->
     <inherits name="net.canang.cfi.web.am.AmModule"/>
     <inherits name="net.canang.cfi.web.dd.DdModule"/>
+    <inherits name="net.canang.cfi.web.so.SoModule"/>
 
     <!-- For development a default of `DEBUG` is recommended -->
     <inherits name='com.google.gwt.logging.Logging'/>
