@@ -119,7 +119,7 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
                     log.debug("deleting = " + groupInDb.getName());
                     CfGroup group = soFinder.findGroupById(groupInDb.getId());
                     CfPrincipal principal = soFinder.findPrincipalById(principalModel.getId());
-                    amManager.removeGroupMember(group, principal);
+                    soManager.removeGroupMember(group, principal);
                 }
             }
 
@@ -128,7 +128,7 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
                     log.debug("Adding = " + groupModel.getName());
                     CfGroup group = soFinder.findGroupById(groupModel.getId());
                     CfPrincipal principal = soFinder.findPrincipalById(principalModel.getId());
-                    amManager.addGroupMember(group, principal);
+                    soManager.addGroupMember(group, principal);
                 }
             }
             //reset set roles value
@@ -142,7 +142,6 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
     public List<PrincipalModel> findAllPrincipals() {
         List<PrincipalModel> models = new ArrayList<PrincipalModel>();
         List<CfPrincipal> principals = soFinder.findAllPrincipals();
-
         for (CfPrincipal principal : principals) {
             models.add(soConverter.convert(principal));
         }
@@ -153,7 +152,6 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
     public List<PrincipalModel> findAllPrincipals(String filter) {
         List<PrincipalModel> models = new ArrayList<PrincipalModel>();
         List<CfPrincipal> principals = soFinder.findPrincipals(filter);
-
         for (CfPrincipal principal : principals) {
             models.add(soConverter.convert(principal));
         }
@@ -166,18 +164,12 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
 
     @Override
     public UserModel findUserById(Long id) {
-        CfUser user = soFinder.findUserById(id);
-        UserModel model = new UserModel();
-        BeanUtils.copyProperties(user, model);
-        return model;
+        return soConverter.convert(soFinder.findUserById(id));
     }
 
     @Override
     public UserModel findUserByUsername(String username) {
-        CfUser user = soFinder.findUserByUsername(username);
-        UserModel model = new UserModel();
-        BeanUtils.copyProperties(user, model);
-        return model;
+        return soConverter.convert(soFinder.findUserByUsername(username));
     }
 
     @Override
@@ -216,18 +208,12 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
 
     @Override
     public GroupModel findGroupById(Long id) {
-        CfGroup group = soFinder.findGroupById(id);
-        GroupModel model = new GroupModel();
-        BeanUtils.copyProperties(group, model);
-        return model;
+        return soConverter.convert(soFinder.findGroupById(id));
     }
 
     @Override
     public GroupModel findGroupByName(String name) {
-        CfGroup group = soFinder.findGroupByName(name);
-        GroupModel model = new GroupModel();
-        BeanUtils.copyProperties(group, model);
-        return model;
+        return soConverter.convert(soFinder.findGroupByName(name));
     }
 
     @Override
@@ -238,7 +224,7 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
             for (GroupModel groupModel : groupModels) {
                 groups.add(soFinder.findGroupById(groupModel.getId()));
             }
-            amManager.updateGroupMembers(user, groups);
+            soManager.updateGroupMembers(user, groups);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -253,7 +239,7 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
                     log.debug("Removing : " + memberInDB.getId() + " : " + memberInDB.getName());
                     CfGroup group = soFinder.findGroupById(groupModel.getId());
                     CfPrincipal principal = soFinder.findPrincipalById(memberInDB.getId());
-                    amManager.removeGroupMember(group, principal);
+                    soManager.removeGroupMember(group, principal);
                 }
             }
 
@@ -262,7 +248,7 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
                     log.debug("Adding : " + memberInList.getId() + " : " + memberInList.getName());
                     CfGroup group = soFinder.findGroupById(groupModel.getId());
                     CfPrincipal principal = soFinder.findPrincipalById(memberInList.getId());
-                    amManager.addGroupMember(group, principal);
+                    soManager.addGroupMember(group, principal);
                 }
             }
 

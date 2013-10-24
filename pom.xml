@@ -12,7 +12,7 @@
         <log4j.version>1.2.16</log4j.version>
         <postgresql.version>9.1-901.jdbc4</postgresql.version>
         <activiti.version>5.13</activiti.version>
-        <jackson.version>1.9.10</jackson.version>
+        <jackson.version>1.9.10</jackson.version>                                                                             k
         <springframework.version>3.2.3.RELEASE</springframework.version>
         <spring-security.version>3.2.0.RC1</spring-security.version>
         <spring-batch.version>2.2.1.RELEASE</spring-batch.version>

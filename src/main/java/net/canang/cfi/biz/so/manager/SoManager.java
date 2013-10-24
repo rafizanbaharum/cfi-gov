@@ -1,15 +1,46 @@
 package net.canang.cfi.biz.so.manager;
 
-import net.canang.cfi.core.dd.model.*;
-import net.canang.cfi.core.so.model.CfActor;
-import net.canang.cfi.core.so.model.CfConfiguration;
-import net.canang.cfi.core.so.model.CfVendor;
+import net.canang.cfi.core.dd.model.CfCostCenter;
+import net.canang.cfi.core.dd.model.CfDepartmentCode;
+import net.canang.cfi.core.dd.model.CfPeriod;
+import net.canang.cfi.core.dd.model.CfReferenceNo;
+import net.canang.cfi.core.exception.LockedGroupException;
+import net.canang.cfi.core.exception.RecursiveGroupException;
+import net.canang.cfi.core.so.model.*;
+
+import java.util.List;
 
 /**
  * @author rafizan.baharum
  * @since 10/21/13
  */
 public interface SoManager {
+
+    // ====================================================================================================
+    // USER
+    // ====================================================================================================
+
+    void saveUser(CfUser user);
+
+    void updateUser(CfUser user);
+
+    // ====================================================================================================
+    // GROUP
+    // ====================================================================================================
+
+    void saveGroup(CfGroup group);
+
+    void updateGroup(CfGroup grop);
+
+    void removeGroupMember(CfGroup group, CfPrincipal principal) throws LockedGroupException;
+
+    void addGroupMember(CfGroup group, CfPrincipal principal) throws RecursiveGroupException, LockedGroupException;
+
+    void updateGroupMembers(CfPrincipal principal, List<CfGroup> groups) throws Exception;
+
+    void updateGroupMembers(CfPrincipal principal, String[] groups) throws Exception;
+
+    void updateGroupMembers(CfGroup group, String[] principals) throws Exception;
 
     // ====================================================================================================
     // ACTOR

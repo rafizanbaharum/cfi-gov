@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 @Table(name = "CF_RFRN_NO")
 @Entity(name = "CfReferenceNo")
-public class CfReferenceNoImpl implements CfReferenceNo, Serializable{
+public class CfReferenceNoImpl implements CfReferenceNo, Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -35,6 +35,10 @@ public class CfReferenceNoImpl implements CfReferenceNo, Serializable{
     @NotNull
     @Column(name = "PREFIX")
     private String prefix;
+
+    @NotNull
+    @Column(name = "YEAR")
+    private Integer year;  // expiry
 
     @NotNull
     @Column(name = "SEQUENCE_FORMAT")
@@ -77,6 +81,14 @@ public class CfReferenceNoImpl implements CfReferenceNo, Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
     public String getPrefix() {

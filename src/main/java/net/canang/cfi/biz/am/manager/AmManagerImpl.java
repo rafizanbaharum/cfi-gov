@@ -5,12 +5,9 @@ import net.canang.cfi.biz.event.AccessEvent;
 import net.canang.cfi.biz.integration.springacl.CfAclPermission;
 import net.canang.cfi.core.am.dao.CfModuleDao;
 import net.canang.cfi.core.am.model.CfModule;
-import net.canang.cfi.core.exception.LockedGroupException;
-import net.canang.cfi.core.exception.RecursiveGroupException;
 import net.canang.cfi.core.so.dao.CfGroupDao;
 import net.canang.cfi.core.so.dao.CfMetaObjectDao;
 import net.canang.cfi.core.so.dao.CfPrincipalDao;
-import net.canang.cfi.core.so.model.CfGroup;
 import net.canang.cfi.core.so.model.CfMetaObject;
 import net.canang.cfi.core.so.model.CfPrincipal;
 import org.apache.log4j.Logger;
@@ -50,36 +47,6 @@ public class AmManagerImpl implements AmManager {
     @Autowired
     private ApplicationContext applicationContext;
 
-
-    @Override
-    public void removeGroupMember(CfGroup group, CfPrincipal principal) throws LockedGroupException {
-        groupDao.removeMember(group, principal);
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void addGroupMember(CfGroup group, CfPrincipal principal) throws RecursiveGroupException, LockedGroupException {
-        groupDao.addMember(group, principal, Util.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void updateGroupMembers(CfPrincipal principal, List<CfGroup> groups) throws Exception {
-//        groupDao.update(principal, groups.toArray(new CfGroup[0]), Util.getCurrentUser());
-        throw new UnsupportedOperationException();// TODO
-    }
-
-    @Override
-    public void updateGroupMembers(CfPrincipal principal, String[] groups) throws Exception {
-//        groupDao.update(principal, groups, Util.getCurrentUser());
-        throw new UnsupportedOperationException();// TODO
-    }
-
-    @Override
-    public void updateGroupMembers(CfGroup group, String[] principals) throws Exception {
-        // TODO:
-
-    }
 
     // =============================================================================
     // PERMISSION METHODS

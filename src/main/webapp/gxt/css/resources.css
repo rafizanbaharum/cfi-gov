@@ -37,6 +37,9 @@ app-viewport
 
 #app-main-breadcrumb {
     background-color: #ffffff;
+    font-size: 18px;
+    font-weight: bolder;
+    color: #000000;
 }
 #app-main-canvas {
     background-color: #ffffff;
@@ -54,6 +57,16 @@ app-viewport
 
 #app-main-menu-tree .x-tree-node-joint {
     display: none;
+}
+
+#app-main-menu-tree .x-tree3-row . x-grid3-cell .x-grid3-cell-inner{
+    border: 0px none;
+}
+
+
+#app-main-menu-tree .x-tree3-node-ct .x-tree3-node-text {
+    font-size: 12px;
+    color: #000;
 }
 
 #app-main-menu-tree .x-tree3-node-ct .x-tree3-node-text {

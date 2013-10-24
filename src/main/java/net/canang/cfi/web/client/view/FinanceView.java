@@ -5,16 +5,21 @@ import com.extjs.gxt.ui.client.mvc.AppEvent;
 import com.extjs.gxt.ui.client.mvc.Controller;
 import com.extjs.gxt.ui.client.mvc.Dispatcher;
 import com.extjs.gxt.ui.client.mvc.View;
+import com.extjs.gxt.ui.client.store.ListStore;
 import com.extjs.gxt.ui.client.store.TreeStore;
 import com.extjs.gxt.ui.client.util.Margins;
+import com.extjs.gxt.ui.client.widget.ContentPanel;
 import com.extjs.gxt.ui.client.widget.Html;
 import com.extjs.gxt.ui.client.widget.LayoutContainer;
 import com.extjs.gxt.ui.client.widget.Viewport;
+import com.extjs.gxt.ui.client.widget.grid.CheckBoxSelectionModel;
 import com.extjs.gxt.ui.client.widget.grid.ColumnConfig;
 import com.extjs.gxt.ui.client.widget.grid.ColumnModel;
+import com.extjs.gxt.ui.client.widget.grid.Grid;
 import com.extjs.gxt.ui.client.widget.layout.BorderLayout;
 import com.extjs.gxt.ui.client.widget.layout.BorderLayoutData;
 import com.extjs.gxt.ui.client.widget.layout.FitLayout;
+import com.extjs.gxt.ui.client.widget.layout.MarginData;
 import com.extjs.gxt.ui.client.widget.treegrid.TreeGrid;
 import com.extjs.gxt.ui.client.widget.treegrid.TreeGridCellRenderer;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -63,7 +68,7 @@ public class FinanceView extends View {
         LayoutContainer header = new LayoutContainer();
         header.setId("app-header");
         header.setLayout(new FitLayout());
-        BorderLayoutData northData = new BorderLayoutData(Style.LayoutRegion.NORTH, 0.18f);
+        BorderLayoutData northData = new BorderLayoutData(Style.LayoutRegion.NORTH, 0.08f);
         northData.setMargins(new Margins(0, 0, 0, 0));
         viewport.add(header, northData);
 
@@ -97,6 +102,8 @@ public class FinanceView extends View {
         BorderLayoutData northData = new BorderLayoutData(Style.LayoutRegion.NORTH, 0.14f);
         northData.setMargins(new Margins(0, 0, 0, 0));
         view.add(breadcrumb, northData);
+        breadcrumb.add(new Html("Home"), new MarginData(30,0,0,360));
+
     }
 
     private void createEast(LayoutContainer view) {
@@ -107,7 +114,47 @@ public class FinanceView extends View {
         BorderLayoutData eastData = new BorderLayoutData(Style.LayoutRegion.EAST, 0.75f);
         eastData.setMargins(new Margins(0, 0, 0, 0));
         view.add(canvas, eastData);
-        canvas.add(new Html("canvas"));
+
+        // dummy grid
+        ContentPanel gridPanel = new ContentPanel();
+        gridPanel.setLayout(new FitLayout());
+
+        ListStore store = new ListStore<MenuModel>();
+        store.add(new MenuModel("3", "Networks", true));
+        store.add(new MenuModel("3", "Backup", true));
+
+        List<ColumnConfig> configs = new ArrayList<ColumnConfig>();
+        ColumnConfig column = new ColumnConfig();
+
+        // checkbox
+        CheckBoxSelectionModel<MenuModel> selectionModel = new CheckBoxSelectionModel<MenuModel>();
+        selectionModel.setSelectionMode(Style.SelectionMode.MULTI);
+        configs.add(selectionModel.getColumn());
+
+        column.setId(MenuModel.NAME);
+        column.setHeader("Name");
+        column.setWidth(400);
+        configs.add(column);
+
+        column = new ColumnConfig();
+        column.setId(MenuModel.SUMMARY);
+        column.setHeader("Summary");
+        column.setWidth(100);
+        column.setSortable(false);
+        configs.add(column);
+        final ColumnModel cm = new ColumnModel(configs);
+        final Grid<MenuModel> grid = new Grid<MenuModel>(store, cm);
+        grid.getView().setShowDirtyCells(false);
+        grid.getView().setEmptyText("grid empty");
+        grid.getView().setForceFit(true);
+        grid.setStripeRows(true);
+        grid.setStateful(true);
+        grid.setLoadMask(true);
+        grid.setAutoExpandColumn(MenuModel.NAME);
+        grid.setSelectionModel(selectionModel);
+        grid.addPlugin(selectionModel);
+        gridPanel.add(grid);
+        canvas.add(gridPanel, new MarginData(10,10,10,20));
     }
 
     private void createWest(LayoutContainer view) {
@@ -119,7 +166,7 @@ public class FinanceView extends View {
         westData.setMargins(new Margins(0, 0, 0, 0));
         view.add(menu, westData);
 
-        // tree menu
+        // dummy tree menu
         TreeStore<MenuModel> store = new TreeStore<MenuModel>();
         store.add(new MenuModel("1", "Home", true), false);
         store.add(new MenuModel("2", "Reports", true), false);

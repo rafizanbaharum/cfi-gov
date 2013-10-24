@@ -12,6 +12,7 @@ public class ReferenceNoModel extends CodedModel {
     public static final String SEQUENCE_FORMAT = "sequenceFormat";
     public static final String REFERENCE_FORMAT = "referenceFormat";
     public static final String PREFIX = "prefix";
+    public static final String YEAR = "year";
     public static final String INCREMENT_VALUE = "incVal";
     public static final String CURRENT_VALUE = "currVal";
 
@@ -49,6 +50,14 @@ public class ReferenceNoModel extends CodedModel {
 
     public void setPrefix(String prefix) {
         set(PREFIX, prefix);
+    }
+
+    public Integer getYear() {
+        return get(YEAR);
+    }
+
+    public void setYear(Integer year) {
+        set(YEAR, year);
     }
 
     public Integer getIncrementValue() {

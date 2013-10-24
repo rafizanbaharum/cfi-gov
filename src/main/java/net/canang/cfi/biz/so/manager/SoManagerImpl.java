@@ -6,16 +6,21 @@ import net.canang.cfi.core.dd.model.CfCostCenter;
 import net.canang.cfi.core.dd.model.CfDepartmentCode;
 import net.canang.cfi.core.dd.model.CfPeriod;
 import net.canang.cfi.core.dd.model.CfReferenceNo;
+import net.canang.cfi.core.exception.LockedGroupException;
+import net.canang.cfi.core.exception.RecursiveGroupException;
 import net.canang.cfi.core.so.dao.CfActorDao;
 import net.canang.cfi.core.so.dao.CfConfigurationDao;
-import net.canang.cfi.core.so.model.CfActor;
-import net.canang.cfi.core.so.model.CfConfiguration;
+import net.canang.cfi.core.so.dao.CfGroupDao;
+import net.canang.cfi.core.so.dao.CfUserDao;
+import net.canang.cfi.core.so.model.*;
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.text.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author rafizan.baharum
@@ -23,6 +28,14 @@ import java.util.Date;
  */
 @Component("soManager")
 public class SoManagerImpl implements SoManager {
+
+    private static final Logger log = Logger.getLogger(SoManagerImpl.class);
+
+    @Autowired
+    private CfUserDao userDao;
+
+    @Autowired
+    private CfGroupDao groupDao;
 
     @Autowired
     private CfActorDao actorDao;
@@ -38,7 +51,66 @@ public class SoManagerImpl implements SoManager {
 
 
     // =============================================================================
-    // CONSUMER METHODS
+    // USER METHODS
+    // =============================================================================
+
+    @Override
+    public void saveUser(CfUser user) {
+        userDao.save(user, Util.getCurrentUser());
+    }
+
+    @Override
+    public void updateUser(CfUser user) {
+        userDao.update(user, Util.getCurrentUser());
+    }
+
+
+    // =============================================================================
+    // GROUP METHODS
+    // =============================================================================
+
+    @Override
+    public void removeGroupMember(CfGroup group, CfPrincipal principal) throws LockedGroupException {
+        groupDao.removeMember(group, principal);
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void addGroupMember(CfGroup group, CfPrincipal principal) throws RecursiveGroupException, LockedGroupException {
+        groupDao.addMember(group, principal, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateGroupMembers(CfPrincipal principal, List<CfGroup> groups) throws Exception {
+//        groupDao.update(principal, groups.toArray(new CfGroup[0]), Util.getCurrentUser());
+        throw new UnsupportedOperationException();// TODO
+    }
+
+    @Override
+    public void updateGroupMembers(CfPrincipal principal, String[] groups) throws Exception {
+//        groupDao.update(principal, groups, Util.getCurrentUser());
+        throw new UnsupportedOperationException();// TODO
+    }
+
+    @Override
+    public void updateGroupMembers(CfGroup group, String[] principals) throws Exception {
+        // TODO:
+
+    }
+
+    @Override
+    public void saveGroup(CfGroup group) {
+        groupDao.save(group, Util.getCurrentUser());
+    }
+
+    @Override
+    public void updateGroup(CfGroup group) {
+        groupDao.update(group, Util.getCurrentUser());
+    }
+
+    // =============================================================================
+    // ACTOR METHODS
     // =============================================================================
 
     @Override

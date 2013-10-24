@@ -85,21 +85,6 @@ public interface SoFinder {
 
     Integer countActor(String filter);
 
-    //====================================================================================================
-    // CONFIGURATION
-    //====================================================================================================
-
-    CfConfiguration findConfigurationById(Long id);
-
-    CfConfiguration findConfigurationByKey(String key);
-
-    List<CfConfiguration> findConfigurations(Integer offset, Integer limit);
-
-    List<CfConfiguration> findConfigurations(String filter, Integer offset, Integer limit);
-
-    Integer countConfiguration();
-
-    Integer countConfiguration(String filter);
 
     //====================================================================================================
     // REFERENCE NO
@@ -116,5 +101,21 @@ public interface SoFinder {
     Integer countReferenceNo();
 
     Integer countReferenceNo(String filter);
+
+    //====================================================================================================
+    // CONFIGURATION
+    //====================================================================================================
+
+    CfConfiguration findConfigurationById(Long id);
+
+    CfConfiguration findConfigurationByKey(String key);
+
+    List<CfConfiguration> findConfigurations(Integer offset, Integer limit);
+
+    List<CfConfiguration> findConfigurations(String filter, Integer offset, Integer limit);
+
+    Integer countConfiguration();
+
+    Integer countConfiguration(String filter);
 
 }

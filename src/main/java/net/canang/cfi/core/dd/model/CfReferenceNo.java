@@ -17,6 +17,10 @@ public interface CfReferenceNo extends CfMetaObject {
 
     void setPrefix(String prefix);
 
+    Integer getYear();
+
+    void setYear(Integer year);
+
     String getSequenceFormat();
 
     void setSequenceFormat(String sequenceFormat);
