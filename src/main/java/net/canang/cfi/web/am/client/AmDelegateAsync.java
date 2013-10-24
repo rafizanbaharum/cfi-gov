@@ -85,7 +85,7 @@ public interface AmDelegateAsync {
 
     void findCostCenterMembersAsList(CostCenterModel costCenterModel, AsyncCallback async);
 
-    void updateMembers(CostCenterModel costCenterModel, AsyncCallback async);
+    void updateCostCenterMembers(CostCenterModel costCenterModel, List<PrincipalModel> members, AsyncCallback async);
 
     // ==================================================================================================== //
     // MODULE
@@ -97,7 +97,7 @@ public interface AmDelegateAsync {
 
     void findAuthorizedModules(AsyncCallback<Set<ModuleModel>> async);
 
-    void findAuthorizedSubModule(AsyncCallback<Map<String,Boolean>> async);
+    void findAuthorizedSubModule(AsyncCallback<Map<String, Boolean>> async);
 
     void findModules(Integer offset, Integer limit, AsyncCallback<PagingLoadResult<ModuleModel>> async);
 

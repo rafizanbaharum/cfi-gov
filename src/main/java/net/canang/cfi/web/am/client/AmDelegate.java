@@ -87,7 +87,7 @@ public interface AmDelegate extends RemoteService {
 
     List<PrincipalModel> findCostCenterMembersAsList(CostCenterModel costCenterModel) throws Exception;
 
-    void updateMembers(CostCenterModel costCenterModel) throws Exception;
+    void updateCostCenterMembers(CostCenterModel costCenterModel, List<PrincipalModel> members) throws Exception;
 
     // ==================================================================================================== //
     // MODULE SUBMODULE

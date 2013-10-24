@@ -116,7 +116,6 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
             List<GroupModel> principalModelInDb = findPrincipalGroups(principalModel);
             for (GroupModel groupInDb : principalModelInDb) {
                 if (!groupModels.contains(groupInDb)) {
-                    log.debug("deleting = " + groupInDb.getName());
                     CfGroup group = soFinder.findGroupById(groupInDb.getId());
                     CfPrincipal principal = soFinder.findPrincipalById(principalModel.getId());
                     soManager.removeGroupMember(group, principal);
@@ -236,22 +235,18 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
             List<PrincipalModel> membersInDB = findGroupMembers(groupModel);
             for (PrincipalModel memberInDB : membersInDB) {
                 if (!membersInList.contains(memberInDB)) {
-                    log.debug("Removing : " + memberInDB.getId() + " : " + memberInDB.getName());
                     CfGroup group = soFinder.findGroupById(groupModel.getId());
                     CfPrincipal principal = soFinder.findPrincipalById(memberInDB.getId());
                     soManager.removeGroupMember(group, principal);
                 }
             }
-
             for (PrincipalModel memberInList : membersInList) {
                 if (!membersInDB.contains(memberInList)) {
-                    log.debug("Adding : " + memberInList.getId() + " : " + memberInList.getName());
                     CfGroup group = soFinder.findGroupById(groupModel.getId());
                     CfPrincipal principal = soFinder.findPrincipalById(memberInList.getId());
                     soManager.addGroupMember(group, principal);
                 }
             }
-
         } catch (RecursiveGroupException e) {
             log.error("error occurred", e);
             throw new GroupException();
@@ -265,11 +260,9 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
     public List<GroupModel> findGroups() {
         List<GroupModel> models = new ArrayList<GroupModel>();
         try {
-            List<CfGroup> list = soFinder.findGroups();
-            for (CfGroup group : list) {
-                GroupModel model = new GroupModel();
-                BeanUtils.copyProperties(group, model);
-                models.add(model);
+            List<CfGroup> groups = soFinder.findGroups();
+            for (CfGroup group : groups) {
+                models.add(soConverter.convert(group));
             }
         } catch (Exception e) {
             log.error("error occurred", e);
@@ -279,14 +272,11 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
 
     @Override
     public List<GroupModel> findGroups(String filter) {
-
         List<GroupModel> models = new ArrayList<GroupModel>();
         try {
             List<CfGroup> list = soFinder.findGroups(filter, 0, 99999);
             for (CfGroup group : list) {
-                GroupModel model = new GroupModel();
-                BeanUtils.copyProperties(group, model);
-                models.add(model);
+                models.add(soConverter.convert(group));
             }
         } catch (Exception e) {
             log.error("error occurred", e);
@@ -300,11 +290,9 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
         try {
             log.info("Loading group list for user#" + principalModel.getId());
             CfPrincipal principal = soFinder.findPrincipalById(principalModel.getId());
-            List<CfGroup> list = soFinder.findGroups(principal);
-            for (CfGroup group : list) {
-                GroupModel model = new GroupModel();
-                BeanUtils.copyProperties(group, model);
-                models.add(model);
+            List<CfGroup> groups = soFinder.findGroups(principal);
+            for (CfGroup group : groups) {
+                models.add(soConverter.convert(group));
             }
         } catch (Exception e) {
             log.error("error occurred", e);
@@ -317,13 +305,9 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
         List<PrincipalModel> models = new ArrayList<PrincipalModel>();
         try {
             log.info("Loading group list for group#" + groupModel.getId());
-            List<CfPrincipal> list = soFinder.findGroupMembers(soFinder.findGroupById(groupModel.getId()));
-            for (CfPrincipal principal : list) {
-                PrincipalModel model = new PrincipalModel();
-                model.setId(principal.getId());
-                model.setName(principal.getName());
-                model.setType(PrincipalType.get(principal.getPrincipalType().ordinal()));
-                models.add(model);
+            List<CfPrincipal> principals = soFinder.findGroupMembers(soFinder.findGroupById(groupModel.getId()));
+            for (CfPrincipal principal : principals) {
+                models.add(soConverter.convert(principal));
             }
         } catch (Exception e) {
             log.error("error occurred", e);
@@ -336,11 +320,9 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
         Integer count = soFinder.countGroup();
         List<GroupModel> models = new ArrayList<GroupModel>();
         try {
-            List<CfGroup> list = soFinder.findGroups(offset, limit);
-            for (CfGroup group : list) {
-                GroupModel model = new GroupModel();
-                BeanUtils.copyProperties(group, model);
-                models.add(model);
+            List<CfGroup> groups = soFinder.findGroups(offset, limit);
+            for (CfGroup group : groups) {
+                models.add(soConverter.convert(group));
             }
         } catch (Exception e) {
             log.error("error occurred", e);
@@ -353,11 +335,9 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
         Integer count = soFinder.countGroup(filter);
         List<GroupModel> models = new ArrayList<GroupModel>();
         try {
-            List<CfGroup> list = soFinder.findGroups(filter, offset, limit);
-            for (CfGroup group : list) {
-                GroupModel model = new GroupModel();
-                BeanUtils.copyProperties(group, model);
-                models.add(model);
+            List<CfGroup> groups = soFinder.findGroups(filter, offset, limit);
+            for (CfGroup group : groups) {
+                models.add(soConverter.convert(group));
             }
         } catch (Exception e) {
             log.error("error occurred", e);
@@ -376,8 +356,7 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
             ArrayList<CostCenterModel> models = new ArrayList<CostCenterModel>();
             List<CfCostCenter> costCenters = ddFinder.findCostCenters(offset, limit);
             for (CfCostCenter costCenter : costCenters) {
-                CostCenterModel model = ddConverter.convert(costCenter);
-                models.add(model);
+                models.add(ddConverter.convert(costCenter));
             }
             return new BasePagingLoadResult<CostCenterModel>(models, offset, count);
         } catch (Exception e) {
@@ -393,8 +372,7 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
             ArrayList<CostCenterModel> models = new ArrayList<CostCenterModel>();
             List<CfCostCenter> costCenters = ddFinder.findCostCenters(filter, offset, limit);
             for (CfCostCenter costCenter : costCenters) {
-                CostCenterModel model = ddConverter.convert(costCenter);
-                models.add(model);
+                models.add(ddConverter.convert(costCenter));
             }
             return new BasePagingLoadResult<CostCenterModel>(models, offset, count);
         } catch (Exception e) {
@@ -410,12 +388,7 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
             List<PrincipalModel> models = new ArrayList<PrincipalModel>();
             List<CfCostCenterMember> costCenterMembers = ddFinder.findCostCenterMembers(ddFinder.findCostCenterById(costCenterModel.getId()));
             for (CfCostCenterMember member : costCenterMembers) {
-                CfPrincipal principal = member.getPrincipal();
-                PrincipalModel model = new PrincipalModel();
-                model.setId(principal.getId());
-                model.setName(principal.getName());
-                model.setType(PrincipalType.get(principal.getPrincipalType().ordinal()));
-                models.add(model);
+                models.add(soConverter.convert(member.getPrincipal()));
             }
             return new BaseListLoadResult<PrincipalModel>(models);
         } catch (Exception e) {
@@ -431,12 +404,7 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
             List<PrincipalModel> models = new ArrayList<PrincipalModel>();
             List<CfCostCenterMember> costCenterMembers = ddFinder.findCostCenterMembers(ddFinder.findCostCenterById(costCenterModel.getId()));
             for (CfCostCenterMember member : costCenterMembers) {
-                CfPrincipal principal = member.getPrincipal();
-                PrincipalModel model = new PrincipalModel();
-                model.setId(principal.getId());
-                model.setName(principal.getName());
-                model.setType(PrincipalType.get(principal.getPrincipalType().ordinal()));
-                models.add(model);
+                models.add(soConverter.convert(member.getPrincipal()));
             }
             return models;
         } catch (Exception e) {
@@ -446,26 +414,20 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
     }
 
     @Override
-    public void updateMembers(CostCenterModel costCenterModel) throws Exception {
+    public void updateCostCenterMembers(CostCenterModel costCenterModel, List<PrincipalModel> members) throws Exception {
         try {
-            List<PrincipalModel> membersInList = costCenterModel.getCostCenterMembers();
             List<PrincipalModel> membersInDB = findCostCenterMembersAsList(costCenterModel);
-
             for (PrincipalModel memberInDB : membersInDB) {
-                if (!membersInList.contains(memberInDB)) {
-                    log.debug("Removing : " + memberInDB.getId() + " : " + memberInDB.getName());
+                if (!members.contains(memberInDB)) {
                     CfCostCenter costCenter = ddFinder.findCostCenterById(costCenterModel.getId());
-                    log.debug("cost center.getId() = " + costCenter.getId() + " " + costCenter.getCode());
                     CfPrincipal principal = soFinder.findPrincipalById(memberInDB.getId());
                     ddManager.removeCostCenterMember(costCenter, principal);
                 }
             }
 
-            for (PrincipalModel memberInList : membersInList) {
+            for (PrincipalModel memberInList : members) {
                 if (!membersInDB.contains(memberInList)) {
-                    log.debug("Adding : " + memberInList.getId() + " : " + memberInList.getName());
                     CfCostCenter costCenter = ddFinder.findCostCenterById(costCenterModel.getId());
-                    log.debug("principal.getId() = " + costCenter.getId() + " " + costCenter.getCode());
                     CfPrincipal principal = soFinder.findPrincipalById(memberInList.getId());
                     ddManager.addCostCenterMember(costCenter, principal);
                 }
@@ -490,10 +452,7 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
 
     @Override
     public ModuleModel findModuleByCode(String code) {
-        CfModule module = amFinder.findModuleByCode(code);
-        ModuleModel model = new ModuleModel();
-        BeanUtils.copyProperties(module, model);
-        return model;
+        return amConverter.convert(amFinder.findModuleByCode(code));
     }
 
     @Override
@@ -520,11 +479,9 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
         Integer count = amFinder.countModule();
         List<ModuleModel> models = new ArrayList<ModuleModel>();
         try {
-            List<CfModule> list = amFinder.findModules(offset, limit);
-            for (CfModule module : list) {
-                ModuleModel model = new ModuleModel();
-                BeanUtils.copyProperties(module, model);
-                models.add(model);
+            List<CfModule> modules = amFinder.findModules(offset, limit);
+            for (CfModule module : modules) {
+                models.add(amConverter.convert(module));
             }
         } catch (Exception e) {
             log.error("error occurred", e);
@@ -537,11 +494,9 @@ public class AmDelegateImpl extends AutoInjectingRemoteServiceServlet implements
         Integer count = amFinder.countModule(filter);
         List<ModuleModel> models = new ArrayList<ModuleModel>();
         try {
-            List<CfModule> list = amFinder.findModules(filter, offset, limit);
-            for (CfModule module : list) {
-                ModuleModel model = new ModuleModel();
-                BeanUtils.copyProperties(module, model);
-                models.add(model);
+            List<CfModule> modules = amFinder.findModules(filter, offset, limit);
+            for (CfModule module : modules) {
+                models.add(amConverter.convert(module));
             }
         } catch (Exception e) {
             log.error("error occurred", e);
